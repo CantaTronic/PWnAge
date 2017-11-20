@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+#doxygen files
+doc/*
+index.html
+
+#git additionals
+mail.sh
+
