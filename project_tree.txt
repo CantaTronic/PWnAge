@@ -5,6 +5,11 @@ project_root
             |    +-- *.h
             |    +-- *.cpp
             |
+            +-- model
+            |    +-- CMakeLists
+            |    +-- *.h
+            |    +-- *.cpp
+            |
             +-- common
             |    +-- CMakeLists
             |    +-- *.h
