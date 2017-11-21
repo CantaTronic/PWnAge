@@ -1,5 +1,10 @@
 project_root
             +-- CMakeLists.txt
+            +-- main
+            |    +-- CMakeLists
+            |    +-- *.h
+            |    +-- *.cpp
+            |
             +-- common
             |    +-- CMakeLists
             |    +-- *.h
