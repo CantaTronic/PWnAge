@@ -32,7 +32,7 @@
 *.app
 
 #doxygen files
-doc/*
+_doc/*
 index.html
 
 #git additionals
