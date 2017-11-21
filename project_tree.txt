@@ -1,0 +1,26 @@
+project_root
+            +-- CMakeLists.txt
+            +-- common
+            |    +-- CMakeLists
+            |    +-- *.h
+            |    +-- *.cpp
+            |
+            +-- CPU
+            |    +-- CMakeLists
+            |    +-- *.h
+            |    +-- *.cpp
+            |
+            +-- GPU
+            |    +-- CMakeLists
+            |    +-- *.h
+            |    +-- *.cpp
+            |
+            +-- test
+            |    +-- CMakeLists.txt
+            |    +-- testfoo
+            |       +-- CMakeLists.txt
+            |       +-- main.cpp
+            |       +-- testfoo.h
+            |       +-- testfoo.cpp
+            |       +-- mockbar.h
+            |
