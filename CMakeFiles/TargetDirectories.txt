@@ -1,1 +1,0 @@
-/nfs/store2.jinr.ru/user/v/vtokareva/parallel_pwa/PWnAge/CMakeFiles/PWnAge.dir
