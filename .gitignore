@@ -38,7 +38,14 @@ index.html
 #git additionals
 mail.sh
 
-#data and caches
+#data, caches and binaries
 data
 *cache
+
+#CMake-created things
+bin/*
+CMakeCache.txt
+cmake_install.cmake
+CMakeFiles/*
+
 
