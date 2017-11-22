@@ -1,17 +1,18 @@
 
 #pragma once
-
+/*
 #include "TResonanceSet.h"
-#include "TInputFiles.h"
-#include "ObjectiveFunction.h"
+#include "TInputFiles.h"*/
+#include "ObjectiveFunction.h"/*
 #include "Minimizer.h"
 
 class TCache;
 class TCalcCache;
-class TDataCache;
+class TDataCache;*/
 // https://isocpp.org/wiki/faq/pointers-to-members
 // class provides FCN, passes resonance parameters to a minimizer
 class TPWAFunction: public ObjectiveFunction {
+  /*
 protected:
   unsigned n_thr;
   vector<TCalcCache*> calc_data, calc_mc;
@@ -29,12 +30,12 @@ protected:
   virtual void PrintMem(unsigned _nev) = 0;
   virtual void DestroyCalcCache(TCalcCache* & x);
   virtual void Norm(double * par);
-  virtual void Eval(double * par, double * grad, double * Z);
+  virtual void Eval(double * par, double * grad, double * Z);*/
 public:
   static double grad_step;
   static int verbosity;
 //   TPWAFunction(string ConfigFileName);
-  void Init(string ConfigFileName);
+ /* void Init(string ConfigFileName);
   virtual ~TPWAFunction();
   virtual void SetParameters(double * par) { resonances.SetParameters(par); }
   virtual void GetParameters(double * par) { resonances.GetParameters(par); }
@@ -52,9 +53,9 @@ public:
   virtual TFloat Step(unsigned i) { return resonances.Par(i).Step(); }
   virtual TFloat Min(unsigned i) { return resonances.Par(i).Min(); }
   virtual TFloat Max(unsigned i) { return resonances.Par(i).Max(); }
-  virtual bool IsFixed(unsigned i) { return resonances.Par(i).IsFixed(); }
+  virtual bool IsFixed(unsigned i) { return resonances.Par(i).IsFixed(); }*/
 };
-
+/*
 class TPWAFunctionCPU: public TPWAFunction {
 public:
   TPWAFunctionCPU(string ConfigFileName);
@@ -88,3 +89,4 @@ protected:
   virtual void Eval(double * par, double * grad, double * Z);
 };
 #endif
+*/

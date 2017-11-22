@@ -1,8 +1,7 @@
 
-#include "TJpsiToKKpi0Const.h"/*
+#include "TJpsiToKKpi0Const.h"
 #include "TPWAFunction.h"
 // #include "TStat.h"
-*/
 #include <omp.h>
 #include <iostream>
 using std::cerr;
@@ -11,16 +10,14 @@ using std::endl;
 #include <iomanip>
 using std::setw;
 
-extern TReaction * gReaction; //22.11.2017
-
 int main(int argc, char * argv[]) {
   gReaction = new TJpsiToKKpi0Const;
-
-  /*
+  
   TPWAFunction::verbosity = -1;
+  
   TCache::verbosity = -1;
 
-  omp_set_num_threads(12);
+  omp_set_num_threads(12);/*
   TPWAFunctionCPU fcn("../resonances.ini"); // считали файл с начальными параметрами
   TFloat time_call;
   double par[100];

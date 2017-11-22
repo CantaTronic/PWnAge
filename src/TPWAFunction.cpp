@@ -1,10 +1,11 @@
 
 #include "TPWAFunction.h"
+/*
 #include "TDataCache.h"
 #include "TCalcCPU.h"
 // #include "TCalcGPU.h"
 #include "TCalcPHI.h"
-#include "ConfigParser.h"
+#include "ConfigParser.h"*/
 #include <cstring>
 #include <iostream>
 using std::cerr;
@@ -13,7 +14,7 @@ using std::endl;
 
 int TPWAFunction::verbosity = 1;
 double TPWAFunction::grad_step = 1e-5;
-
+/*
 void TPWAFunctionCPU::NCaches() {
   n_caches = omp_get_max_threads();
 }
@@ -421,15 +422,15 @@ TFloat TPWAFunction::TestGrad(unsigned n, unsigned nthr, double * _grad) {
     fprintf(stderr, "%3i%9.5f\n", nthr, omp_get_wtime()-start_c);
     fflush(stderr);
   }
-/*  for(unsigned k = 0; k < n; k++) {
-    for(unsigned i = 0; i < NPar(); i++) {
-      par[i] += 0.01;
-    }
-    Eval(par, val, grad);
-    for(unsigned i = 0; i < NPar(); i++)
-      par[i] -= 0.01;
-    Eval(par, val, grad);
-  }*/
+//   for(unsigned k = 0; k < n; k++) {
+//     for(unsigned i = 0; i < NPar(); i++) {
+//       par[i] += 0.01;
+//     }
+//     Eval(par, val, grad);
+//     for(unsigned i = 0; i < NPar(); i++)
+//       par[i] -= 0.01;
+//     Eval(par, val, grad);
+//   }
 //   resonances.SetParameters(par_orig);
 //   Eval(par_orig, val);
   delete [] par;
@@ -455,15 +456,15 @@ TFloat TPWAFunction::TestGZ(unsigned n) {
 //       fprintf(stderr, "  Z[%3i] = %16.8f\n", i, Z[i]);
     fflush(stderr);
   }
-/*  for(unsigned k = 0; k < n; k++) {
-  for(unsigned i = 0; i < NPar(); i++) {
-  par[i] += 0.01;
-}
-  Eval(par, val, grad);
-  for(unsigned i = 0; i < NPar(); i++)
-  par[i] -= 0.01;
-  Eval(par, val, grad);
-}*/
+//   for(unsigned k = 0; k < n; k++) {
+//   for(unsigned i = 0; i < NPar(); i++) {
+//   par[i] += 0.01;
+// }
+//   Eval(par, val, grad);
+//   for(unsigned i = 0; i < NPar(); i++)
+//   par[i] -= 0.01;
+//   Eval(par, val, grad);
+// }
 //   resonances.SetParameters(par_orig);
   Eval(par_orig, val);
   delete [] par;
@@ -472,3 +473,4 @@ TFloat TPWAFunction::TestGZ(unsigned n) {
   delete [] Z;
   return omp_get_wtime()-start;
 }
+*/

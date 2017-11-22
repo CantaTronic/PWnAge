@@ -6,8 +6,8 @@ using std::cerr;
 using std::endl;
 #include <cstring>
 
-TReaction * gReaction = 0;/*
-int TCache::verbosity = 0;
+TReaction * gReaction = 0;
+int TCache::verbosity = 0;/*
 
 TCache::TCache()
 : memHandler(CPUMemoryHandler::Get()), mem_alloc(0), resonances(0),
