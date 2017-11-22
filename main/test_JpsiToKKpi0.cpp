@@ -17,7 +17,7 @@ int main(int argc, char * argv[]) {
   TCache::verbosity = -1;
 
   omp_set_num_threads(12);
-  TPWAFunctionCPU fcn("resonances.ini"); // считали файл с начальными параметрами
+  TPWAFunctionCPU fcn("../resonances.ini"); // считали файл с начальными параметрами
   TFloat time_call;
   double par[100];
   cerr<<" ==== FUMILI ===="<<endl;
