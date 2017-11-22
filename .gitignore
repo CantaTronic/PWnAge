@@ -38,3 +38,7 @@ index.html
 #git additionals
 mail.sh
 
+#data and caches
+data
+*cache
+

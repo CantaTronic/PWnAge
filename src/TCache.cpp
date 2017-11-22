@@ -1,12 +1,12 @@
 
 #include "TCache.h"
-#include "TResonanceSet.h"
+/*#include "TResonanceSet.h"*/
 #include <iostream>
 using std::cerr;
 using std::endl;
 #include <cstring>
 
-TReaction * gReaction = 0;
+TReaction * gReaction = 0;/*
 int TCache::verbosity = 0;
 
 TCache::TCache()
@@ -21,14 +21,14 @@ TCache::TCache(const TCache & x)
 : memHandler(x.memHandler), mem_alloc(0), resonances(x.resonances),
   nev(x.nev), v1kT2(x.v1kT2), s_kchan(x.s_kchan),
   weight(x.weight), precalc_factor(x.precalc_factor) { }
-/*
-TCache & TCache::operator= (const TCache & x) {
-  if(this == &x) return *this;
-  resonances = x.resonances;
-  nev = x.nev;
-  return *this;
-}
-*/
+
+// TCache & TCache::operator= (const TCache & x) {
+//   if(this == &x) return *this;
+//   resonances = x.resonances;
+//   nev = x.nev;
+//   return *this;
+// }
+
 void TCache::Cleanup() {
   v1kT2.Cleanup();
   s_kchan.Cleanup();
@@ -81,3 +81,4 @@ void CPUMemoryHandler::Zero(void * p, unsigned n_bytes) {
 void CPUMemoryHandler::Copy(void * to, const void * from, unsigned n_bytes) {
   memcpy(to, from, n_bytes);
 }
+*/

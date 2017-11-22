@@ -1,8 +1,7 @@
 
-#include "TJpsiToKKpi0Const.h"/*
+#include "TJpsiToKKpi0Const.h"
 #include "TPWAFunction.h"
 // #include "TStat.h"
-*/
 #include <omp.h>
 #include <iostream>
 using std::cerr;
@@ -10,8 +9,6 @@ using std::cout;
 using std::endl;
 #include <iomanip>
 using std::setw;
-
-extern TReaction * gReaction; //22.11.2017
 
 int main(int argc, char * argv[]) {
   gReaction = new TJpsiToKKpi0Const;

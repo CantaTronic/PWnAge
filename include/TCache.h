@@ -3,7 +3,7 @@
 
 #include "OffloadDirectives.h"
 #include "cfloat.h"
-#include "TPtr.h"
+/*#include "TPtr.h"*/
 
 class TResonanceSet;
 
@@ -35,6 +35,8 @@ data:
   cfloat prod_factor[r*3+k] r,k
   cfloat ampl[r*4+m][i] r,m,iev
 */
+
+/*
 class TCache {
 public:
   TCache();
@@ -60,4 +62,5 @@ protected:
 private:
   TCache & operator= (const TCache & x); // copy-assignment
 };
+*/
 PWA_END_OFFLOAD

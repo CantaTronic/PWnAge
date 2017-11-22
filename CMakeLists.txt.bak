@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 2.8)
+
+project(PWnAge)
+
+#not test right now, just build first
+# enable_testing()
+
+add_subdirectory(main)
+add_subdirectory(model)
+add_subdirectory(common)
+add_subdirectory(CPU)
+add_subdirectory(GPU)
+# add_subdirectory(test)
