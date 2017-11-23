@@ -1,8 +1,9 @@
 
-#include "TJpsiToKKpi0Const.h"
+#include "TJpsiToKKpi0Const.h"  /*this is a header of the concrete reaction we want to make calculations for. Reactions are being inherited from TReaction abstract class*/
 #include "TPWAFunction.h"
 // #include "TStat.h"
 #include <omp.h>
+#include <TUtils.h>
 #include <iostream>
 using std::cerr;
 using std::cout;
@@ -10,15 +11,26 @@ using std::endl;
 #include <iomanip>
 using std::setw;
 
+/*
+ To be runned with a number of threads given. 
+ Example: ./code 4
+ */
+
 int main(int argc, char * argv[]) {
+  //model initialization
   gReaction = new TJpsiToKKpi0Const;
   
+  //suppress verbose control print both about function pecularities and caching
   TPWAFunction::verbosity = -1;
-  
   TCache::verbosity = -1;
 
-  omp_set_num_threads(12);/*
-  TPWAFunctionCPU fcn("../resonances.ini"); // считали файл с начальными параметрами
+  setThrNums(argc, argv); //see TUtils.h
+
+  //init CPU function calculation with a parameters list
+ // TPWAFunctionCPU fcn("../resonances.ini"); 
+  
+  /*
+  
   TFloat time_call;
   double par[100];
   cerr<<" ==== FUMILI ===="<<endl;
