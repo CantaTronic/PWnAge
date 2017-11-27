@@ -1,6 +1,6 @@
 
 #include "TJpsiToKKpi0Const.h"  /*this is a header of the concrete reaction we want to make calculations for. Reactions are being inherited from TReaction abstract class*/
-#include "TPWAFunction.h"
+#include "TPWAFunctionCPU.h"
 #include "TCache.h"
 // #include "TStat.h"
 #include <omp.h>
@@ -28,7 +28,7 @@ int main(int argc, char * argv[]) {
   setThrNums(argc, argv); //see TUtils.h
 
   //init CPU function calculation with a parameters list
-  TPWAFunctionCPU fcn("../resonances.ini"); 
+  TPWAFunctionCPU fcn("/nfs/store2.jinr.ru/user/v/vtokareva/parallel_pwa/PWnAge/resonances.ini"); 
   
   /*
   

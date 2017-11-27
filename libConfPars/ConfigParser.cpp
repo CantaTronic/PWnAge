@@ -4,6 +4,7 @@
 #include "TGlobals.h"
 #include <fstream>
 #include <iostream>
+#include <cstdlib>
 using std::cerr;
 using std::endl;
 
@@ -33,7 +34,7 @@ ConfigParser::ConfigParser(string configFileName, TResonanceSet * set, TInputFil
     iss >> flag >> delim;
     if(flag == "" || delim != "=")
       continue; // not parameter string
-    if(flag == "dataEventFile") {
+  /*  if(flag == "dataEventFile") {
       Get(inputFiles->dataEventFile);
       continue;
     }
@@ -48,36 +49,36 @@ ConfigParser::ConfigParser(string configFileName, TResonanceSet * set, TInputFil
     if(flag == "mcCacheFile") {
       Get(inputFiles->mcCacheFile);
       continue;
-    }
-    if(flag == "resonance") { // new resonance begins
-      res = set->Add(Get<string>()); // put resonance in set
-      continue;
-    }
-    if(!res) continue;
-    // read resonance parameter only if any resonances added into set
-    if(flag == "M") {
-      GetFitPar(res._M(), 1.0/*,  0.1, 3.0*/);
-    } else if(flag == "G") {
-      GetFitPar(res._G(), 0.2/*, 0.01, 1.0*/);
-    } else if(flag == "r") {
-      GetFitPar(res._r(), 0.73/*, 0.200, 1.0*/);
-    } else if(flag == "coupling") {
-      GetFitPar(res._Coupling(), 1/*, -100, 100*/);
-    } else if(flag == "phase") {
-      // phases in config file are given in degrees
-      // should be converted to radians
-      GetProdPhase(res._Phase(), 0/*, -360, 360*/);
-    } else if(flag == "J") {
-      res.J(Get<unsigned>());
-    } else if(flag == "P") {
-      res.P(Get<unsigned>());
-    } else if(flag == "C") {
-      res.C(Get<unsigned>());
-    } else if(flag == "type") {
-      res.type(Get<int>());
-    } else if(flag == "symmetryMultiplier") {
-      GetSymmetryMultiplier(res);
-    }
+    }*/
+//     if(flag == "resonance") { // new resonance begins
+//       res = set->Add(Get<string>()); // put resonance in set
+//       continue;
+//     }
+//     if(!res) continue;
+//     // read resonance parameter only if any resonances added into set
+//     if(flag == "M") {
+//       GetFitPar(res._M(), 1.0/*,  0.1, 3.0*/);
+//     } else if(flag == "G") {
+//       GetFitPar(res._G(), 0.2/*, 0.01, 1.0*/);
+//     } else if(flag == "r") {
+//       GetFitPar(res._r(), 0.73/*, 0.200, 1.0*/);
+//     } else if(flag == "coupling") {
+//       GetFitPar(res._Coupling(), 1/*, -100, 100*/);
+//     } else if(flag == "phase") {
+//       // phases in config file are given in degrees
+//       // should be converted to radians
+//       GetProdPhase(res._Phase(), 0/*, -360, 360*/);
+//     } else if(flag == "J") {
+//       res.J(Get<unsigned>());
+//     } else if(flag == "P") {
+//       res.P(Get<unsigned>());
+//     } else if(flag == "C") {
+//       res.C(Get<unsigned>());
+//     } else if(flag == "type") {
+//       res.type(Get<int>());
+//     } else if(flag == "symmetryMultiplier") {
+//       GetSymmetryMultiplier(res);
+//     }
   }
   ifile.close();
 }
@@ -111,7 +112,7 @@ void ConfigParser::GetProdPhase(TFitPar p, double _v) {
   }
   p.Set(_v*_pi/180., _vmin*_pi/180., _vmax*_pi/180.);
 }
-
+/*
 void ConfigParser::GetSymmetryMultiplier(TResonance & res) {
   for(unsigned i = 0; i < 3; i++) {
     TFloat m = 0;
@@ -119,3 +120,4 @@ void ConfigParser::GetSymmetryMultiplier(TResonance & res) {
     res.SymmetryMultiplier(i) = m;
   }
 }
+*/

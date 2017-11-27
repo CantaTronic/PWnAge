@@ -70,7 +70,7 @@ main/test_JpsiToKKpi0.cpp
 src/TJpsiToKKpi0Const.cpp 
 src/TCache.cpp
 src/TPWAFunction.cpp
-# src/ConfigParser.cpp
+# libConfPars/ConfigParser.cpp
 )#${SOURCES})
 # 
 target_link_libraries(${PROJECT_NAME} ConfPars)

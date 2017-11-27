@@ -1,7 +1,7 @@
 
 #pragma once
 
-// #include "TFitPar.h"
+#include "TFitPar.h"
 #include "TResonanceSet.h"
 #include <sstream>
 #include <string>

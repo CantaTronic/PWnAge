@@ -1,16 +1,16 @@
 
 cmake_minimum_required(VERSION 2.8)
 
-set(ConfPars
+set(ConfPars_SRC
     ConfigParser.h
-    ConfigParser.cc
+    ConfigParser.cpp
 )
 
 # Declare the library
 add_library(ConfPars 
 # STATIC
 SHARED
-    ${libfoo_SRCS})
+    ${ConfPars_SRC})
 
 # Specify here the include directories exported by this library
 target_include_directories(ConfPars PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}) 
