@@ -9,7 +9,7 @@ protected:
 public:
   ObjectiveFunction(): last_val(0.) { }
   unsigned fcn_call;
-  virtual void Eval(double * par, double & val, double * grad = 0, double * Z = 0) = 0;
+/*  virtual void Eval(double * par, double & val, double * grad = 0, double * Z = 0) = 0;
   virtual TFloat LastVal() { return last_val; }
   virtual ~ObjectiveFunction() { }
   virtual unsigned NPar() = 0;
@@ -18,5 +18,5 @@ public:
   virtual TFloat Step(unsigned i) = 0;
   virtual TFloat Min(unsigned i) = 0;
   virtual TFloat Max(unsigned i) = 0;
-  virtual bool IsFixed(unsigned i) = 0;
+  virtual bool IsFixed(unsigned i) = 0;*/
 };

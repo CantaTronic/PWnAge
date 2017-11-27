@@ -28,7 +28,7 @@ int main(int argc, char * argv[]) {
   setThrNums(argc, argv); //see TUtils.h
 
   //init CPU function calculation with a parameters list
-//   TPWAFunctionCPU fcn("../resonances.ini"); 
+  TPWAFunctionCPU fcn("../resonances.ini"); 
   
   /*
   

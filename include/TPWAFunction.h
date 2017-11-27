@@ -1,5 +1,9 @@
 
 #pragma once
+
+#include <string> //vt
+using std::string;
+
 /*
 #include "TResonanceSet.h"
 #include "TInputFiles.h"*/
@@ -35,7 +39,7 @@ public:
   static double grad_step;
   static int verbosity;
 //   TPWAFunction(string ConfigFileName);
- /* void Init(string ConfigFileName);
+  void Init(string ConfigFileName);/*
   virtual ~TPWAFunction();
   virtual void SetParameters(double * par) { resonances.SetParameters(par); }
   virtual void GetParameters(double * par) { resonances.GetParameters(par); }
@@ -55,16 +59,16 @@ public:
   virtual TFloat Max(unsigned i) { return resonances.Par(i).Max(); }
   virtual bool IsFixed(unsigned i) { return resonances.Par(i).IsFixed(); }*/
 };
-/*
+
 class TPWAFunctionCPU: public TPWAFunction {
 public:
-  TPWAFunctionCPU(string ConfigFileName);
+  TPWAFunctionCPU(string /*ConfigFileName*/);/*
 protected:
   virtual void NCaches();
   virtual TCalcCache * CreateCalcCache(TCache * x, unsigned offset, unsigned blockSize);
-  virtual void PrintMem(unsigned _nev);
+  virtual void PrintMem(unsigned _nev);*/
 };
-
+/*
 class TPWAFunctionGPU: public TPWAFunction {
 public:
   TPWAFunctionGPU(string ConfigFileName);
