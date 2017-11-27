@@ -4,8 +4,8 @@
 #include "TDataCache.h"
 #include "TCalcCPU.h"
 // #include "TCalcGPU.h"
-#include "TCalcPHI.h"
-#include "ConfigParser.h"*/
+#include "TCalcPHI.h"*/
+#include "ConfigParser.h"
 #include <cstring>
 #include <iostream>
 using std::cerr;
@@ -84,10 +84,11 @@ void TPWAFunctionPHI::DestroyCalcCache(TCalcCache* & x) {
   x = 0;
 }
 #endif
+*/
 TPWAFunctionCPU::TPWAFunctionCPU(string ConfigFileName) {
   Init(ConfigFileName);
 }
-
+/*
 // TPWAFunctionGPU::TPWAFunctionGPU(string ConfigFileName) {
 //   Init(ConfigFileName);
 // }
@@ -96,10 +97,13 @@ TPWAFunctionPHI::TPWAFunctionPHI(string ConfigFileName) {
   Init(ConfigFileName);
 }
 #endif
+*/
 void TPWAFunction::Init(string ConfigFileName) {
+  std::cout<<"Init\n";/*
   ConfigParser conf(ConfigFileName, &resonances, &inputFiles);
   if(verbosity >= 3)
     resonances.PrintParameters();
+  
   NCaches();
   data = new TDataCache(&resonances, inputFiles.dataEventFile, inputFiles.dataCacheFile);
   mem_alloc = data->mem_alloc;
@@ -121,8 +125,9 @@ void TPWAFunction::Init(string ConfigFileName) {
     calc_mc[thr] = CreateCalcCache(mc, offset, blockSize);
   }
   PrintMem(mc->NEv());
+  */
 }
-
+/*
 TPWAFunction::~TPWAFunction() {
   for(unsigned thr = 0; thr < n_caches; thr++) {
     DestroyCalcCache(calc_data[thr]);
