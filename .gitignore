@@ -49,3 +49,7 @@ cmake_install.cmake
 CMakeFiles/*
 Makefile
 
+lib*/Makefile
+lib*/CMakeFiles/*
+lib*/cmake_install.*
+
