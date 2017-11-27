@@ -38,16 +38,16 @@ private:
    * \param [in] _vmax the step size to return if not given in the config file
    * \return     value of the parameter with the given name
    */
-  void GetFitPar(TFitPar p, double _v = 0);
+/*  void GetFitPar(TFitPar p, double _v = 0);
   void GetProdPhase(TFitPar p, double _v = 0);
-  void GetSymmetryMultiplier(TResonance & res);
-  template<class T>
+  void GetSymmetryMultiplier(TResonance & res);*/
+ /* template<class T>
   void Get(T & v);
   template<class T>
-  T Get();
+  T Get();*/
   std::istringstream iss; //! line currently being parsed
 };
-
+/*
 template<class T>
 void ConfigParser::Get(T & v) {
   iss>>v;
@@ -57,4 +57,4 @@ T ConfigParser::Get() {
   T v;
   Get(v);
   return v;
-}
+}*/

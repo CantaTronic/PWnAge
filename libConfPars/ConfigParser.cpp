@@ -1,5 +1,6 @@
 
 #include "ConfigParser.h"
+#include "TFitPar.h"
 #include "TInputFiles.h"
 #include "TGlobals.h"
 #include <fstream>
@@ -10,7 +11,6 @@ using std::endl;
 
 ConfigParser::ConfigParser(string configFileName, TResonanceSet * set, TInputFiles * inputFiles) {
   TResonance res;
-//   std::cerr<<"# "<<resonances<<' '<<inputFiles<<' '<<inputFiles[0]<<std::endl;
   std::ifstream ifile;
   ifile.open(configFileName.c_str());
   if (!ifile) {
@@ -82,7 +82,7 @@ ConfigParser::ConfigParser(string configFileName, TResonanceSet * set, TInputFil
   }
   ifile.close();
 }
-
+/*
 void ConfigParser::GetFitPar(TFitPar p, double _v) {
   string type = "free";
   iss >> _v >> type;

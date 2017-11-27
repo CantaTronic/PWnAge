@@ -1,6 +1,7 @@
 
 #include "TPWAFunctionCPU.h"
 
+/*
 void TPWAFunctionCPU::NCaches() {
   n_caches = omp_get_max_threads();
 }
@@ -13,7 +14,7 @@ TCalcCache * TPWAFunctionCPU::CreateCalcCache(TCache * x, unsigned offset, unsig
 
 void TPWAFunctionCPU::PrintMem(unsigned _nev) {
   TCache::PrintMem(mem_alloc, resonances.N(), _nev);
-}
+}*/
 
 TPWAFunctionCPU::TPWAFunctionCPU(string ConfigFileName) {
   Init(ConfigFileName);

@@ -1,8 +1,12 @@
 
 #pragma once
 
-#include "OffloadDirectives.h"
-#include "TFloat.h"
+#include "TParType.h"
+#include "TParArray.h"
+#include "TFitPar.h"
+#include "TFloat.h"   //changing precision double/float
+#include "OffloadDirectives.h"  //for offload directives: PWA_START_OFFLOAD, PWA_END_OFFLOAD
+
 
 PWA_START_OFFLOAD
 #include <vector>
@@ -12,55 +16,6 @@ using std::vector;
 using std::string;
 
 PWA_START_OFFLOAD
-
-enum TParType { kFixed, kUnchanged, kChanged };
-
-struct TParArray {
-  /*Структура массивов*/
-  vector<string> names;
-  vector<TFloat> parameters;
-  vector<TParType> types;
-  vector<TFloat> minima;
-  vector<TFloat> maxima;
-  vector<TFloat> steps;
-  vector<unsigned> quantumNumbers;
-  vector<TFloat> symmetryMultipliers;
-  unsigned lmax;
-  unsigned n_free_par;
-  TParArray(): lmax(0), n_free_par(0) { }
- /* virtual ~TParArray() { }
-  virtual void UpdateL();
-  virtual void UpdateNFreePar();
-  virtual void SetParameter(unsigned i, TFloat v);*/
-};
-
-class TFitPar {
-  /*
-   Класс отвечает за работу с одним параметром фита
-   */
-protected:
-  static const string par_names[5];   //названия параметров
-  TParArray * par;  //структура с массивами значений параметров
-  unsigned offset;  //сдвиг (храним для кеширования)
-public:
-  TFitPar(TParArray * _par, unsigned _offset): par(_par), offset(_offset) { } //инициализация
-  TFitPar(const TFitPar & x): par(x.par), offset(x.offset) { }
- /* TFitPar & operator= (const TFitPar & x);  //сравнение значений параметров 
-  string Name();
-  const char * CName() { return Name().c_str(); }*/
-  void Set(TFloat v, TFloat step = 0.01); //установка значений параметров
-  void Set(TFloat v, TFloat min, TFloat max, TFloat step = 0.01);
- /* void operator= (TFloat v) { par->SetParameter(offset, v); }
-  operator TFloat() { return par->parameters[offset]; }
-  TParType Type() const { return par->types[offset]; }
-  bool Changed() { return par->types[offset] == kChanged; }
-  void SetChanged() { if(par->types[offset] == kUnchanged) par->types[offset] = kChanged; }
-  void SetUnchanged() { if(par->types[offset] == kChanged) par->types[offset] = kUnchanged; }
-  bool IsFixed() { return par->types[offset] == kFixed; }
-  TFloat Min() { return par->minima[offset]; }
-  TFloat Max() { return par->maxima[offset]; }
-  TFloat Step() { return par->steps[offset]; }*/
-};
 
 class TResonance {
 public:
