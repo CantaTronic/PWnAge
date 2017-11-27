@@ -9,7 +9,7 @@ class TCalcCPU: public TCalcCache {
 public:
   TCalcCPU();
   TCalcCPU(TCache * x, unsigned offset = 0, unsigned _nev = 0);
-  virtual ~TCalcCPU() { }
+  virtual ~TCalcCPU() { }/*
 protected:
   virtual void Allocate();
   virtual void BWConstW(cfloat * bw_rk, TFloat * s_kchan_k, TFloat M2, TFloat MG);
@@ -27,6 +27,6 @@ protected:
   virtual TFloat CalcF2(TFloat * t_ampl_sq_i, TFloat * t_ampl_sq_j, TFloat * t_ampl_sq);
 private:
   TCalcCPU(const TCalcCPU & x);              // copy-constructor
-  TCalcCPU & operator= (const TCalcCPU & x); // copy-assignment
+  TCalcCPU & operator= (const TCalcCPU & x); // copy-assignment*/
 };
 PWA_END_OFFLOAD

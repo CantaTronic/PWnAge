@@ -2,6 +2,7 @@
 #pragma once
 
 #include "TPWAFunction.h"
+#include "TCalcGPU.h"
 
 class TPWAFunctionGPU: public TPWAFunction {
 public:

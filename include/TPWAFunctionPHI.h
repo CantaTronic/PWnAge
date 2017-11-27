@@ -2,6 +2,7 @@
 #pragma once
 
 #include "TPWAFunction.h"
+#include "TCalcPHI.h"
 
 #ifdef __INTEL_COMPILER
 class TPWAFunctionPHI: public TPWAFunction {

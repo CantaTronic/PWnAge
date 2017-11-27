@@ -2,10 +2,9 @@
 #include "TPWAFunction.h"
 /*
 #include "TDataCache.h"
-#include "TCalcCPU.h"
-// #include "TCalcGPU.h"
-#include "TCalcPHI.h"*/
-#include "ConfigParser.h"
+// 
+*/
+#include "../libConfPars/ConfigParser.h"
 #include <cstring>
 #include <iostream>
 using std::cerr;
@@ -15,9 +14,7 @@ using std::endl;
 int TPWAFunction::verbosity = 1;
 double TPWAFunction::grad_step = 1e-5;
 /*
-void TPWAFunctionCPU::NCaches() {
-  n_caches = omp_get_max_threads();
-}
+
 
 // void TPWAFunctionGPU::NCaches() {
 //   n_caches = 1;
@@ -33,11 +30,6 @@ void TPWAFunctionPHI::NCaches() {
   n_caches = t_n_caches;
 }
 #endif
-TCalcCache * TPWAFunctionCPU::CreateCalcCache(TCache * x, unsigned offset, unsigned blockSize) {
-  TCalcCache * tmp = new TCalcCPU(x, offset, blockSize);
-  mem_alloc += tmp->mem_alloc;
-  return tmp;
-}
 
 // TCalcCache * TPWAFunctionGPU::CreateCalcCache(TCache * x, unsigned offset, unsigned blockSize) {
 //   TCalcCache * tmp = new TCalcGPU(x, offset, blockSize);
@@ -57,9 +49,7 @@ TCalcCache * TPWAFunctionPHI::CreateCalcCache(TCache * x, unsigned offset, unsig
   return reinterpret_cast<TCalcCache*>(tmpCalcPHI);
 }
 #endif
-void TPWAFunctionCPU::PrintMem(unsigned _nev) {
-  TCache::PrintMem(mem_alloc, resonances.N(), _nev);
-}
+
 
 // void TPWAFunctionGPU::PrintMem(unsigned _nev) {
 //   TCache::PrintMem(mem_alloc, resonances.N(), _nev);
@@ -85,9 +75,7 @@ void TPWAFunctionPHI::DestroyCalcCache(TCalcCache* & x) {
 }
 #endif
 */
-TPWAFunctionCPU::TPWAFunctionCPU(string ConfigFileName) {
-  Init(ConfigFileName);
-}
+
 /*
 // TPWAFunctionGPU::TPWAFunctionGPU(string ConfigFileName) {
 //   Init(ConfigFileName);
@@ -99,8 +87,8 @@ TPWAFunctionPHI::TPWAFunctionPHI(string ConfigFileName) {
 #endif
 */
 void TPWAFunction::Init(string ConfigFileName) {
-  std::cout<<"Init\n";/*
-  ConfigParser conf(ConfigFileName, &resonances, &inputFiles);
+  std::cout<<"Init\n";
+  ConfigParser conf(ConfigFileName, &resonances, &inputFiles);/*
   if(verbosity >= 3)
     resonances.PrintParameters();
   

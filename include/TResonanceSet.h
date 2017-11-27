@@ -16,6 +16,7 @@ PWA_START_OFFLOAD
 enum TParType { kFixed, kUnchanged, kChanged };
 
 struct TParArray {
+  /*Структура массивов*/
   vector<string> names;
   vector<TFloat> parameters;
   vector<TParType> types;
@@ -27,26 +28,29 @@ struct TParArray {
   unsigned lmax;
   unsigned n_free_par;
   TParArray(): lmax(0), n_free_par(0) { }
-  virtual ~TParArray() { }
+ /* virtual ~TParArray() { }
   virtual void UpdateL();
   virtual void UpdateNFreePar();
-  virtual void SetParameter(unsigned i, TFloat v);
+  virtual void SetParameter(unsigned i, TFloat v);*/
 };
 
 class TFitPar {
+  /*
+   Класс отвечает за работу с одним параметром фита
+   */
 protected:
-  static const string par_names[5];
-  TParArray * par;
-  unsigned offset;
+  static const string par_names[5];   //названия параметров
+  TParArray * par;  //структура с массивами значений параметров
+  unsigned offset;  //сдвиг (храним для кеширования)
 public:
-  TFitPar(TParArray * _par, unsigned _offset): par(_par), offset(_offset) { }
+  TFitPar(TParArray * _par, unsigned _offset): par(_par), offset(_offset) { } //инициализация
   TFitPar(const TFitPar & x): par(x.par), offset(x.offset) { }
-  TFitPar & operator= (const TFitPar & x);
+ /* TFitPar & operator= (const TFitPar & x);  //сравнение значений параметров 
   string Name();
-  const char * CName() { return Name().c_str(); }
-  void Set(TFloat v, TFloat step = 0.01);
+  const char * CName() { return Name().c_str(); }*/
+  void Set(TFloat v, TFloat step = 0.01); //установка значений параметров
   void Set(TFloat v, TFloat min, TFloat max, TFloat step = 0.01);
-  void operator= (TFloat v) { par->SetParameter(offset, v); }
+ /* void operator= (TFloat v) { par->SetParameter(offset, v); }
   operator TFloat() { return par->parameters[offset]; }
   TParType Type() const { return par->types[offset]; }
   bool Changed() { return par->types[offset] == kChanged; }
@@ -55,7 +59,7 @@ public:
   bool IsFixed() { return par->types[offset] == kFixed; }
   TFloat Min() { return par->minima[offset]; }
   TFloat Max() { return par->maxima[offset]; }
-  TFloat Step() { return par->steps[offset]; }
+  TFloat Step() { return par->steps[offset]; }*/
 };
 
 class TResonance {
@@ -76,7 +80,7 @@ public:
   // add info on reactions [kinematic channels] it contributes to
   // need to have a list of globally defined reaction and channels?
   // additionally introduce decays maechanisms (--> modes + couplings)
-  TFitPar Par(unsigned i);
+ /* TFitPar Par(unsigned i);
   TFitPar _M() { return Par(0); }
   TFitPar _G() { return Par(1); }
   TFitPar _r() { return Par(2); }
@@ -95,7 +99,7 @@ public:
   void P(unsigned v) { par->quantumNumbers[offsetQN+1] = v; }
   void C(unsigned v) { par->quantumNumbers[offsetQN+2] = v; }
   void type(unsigned v) { par->quantumNumbers[offsetQN+3] = v; }
-  TFloat & SymmetryMultiplier(unsigned i) { return par->symmetryMultipliers[offsetSM+i]; }
+  TFloat & SymmetryMultiplier(unsigned i) { return par->symmetryMultipliers[offsetSM+i]; }*/
   // need to have channel specif data
   // productionCouplings[jpsi_decay_channl][kinematic_channel]
 };
@@ -106,16 +110,16 @@ class OCacheFile;
 class TResonanceSet: protected TParArray {
 public:
   TResonanceSet(): TParArray() { }
-  TResonanceSet(const TResonanceSet & x): TParArray(x) { }
+/*  TResonanceSet(const TResonanceSet & x): TParArray(x) { }
   TResonanceSet & operator= (const TResonanceSet & x); // copy-assignment
   virtual ~TResonanceSet() { }
   unsigned L() { return lmax; }
   unsigned N() { return names.size(); }
   unsigned NPar() { return parameters.size(); }
   unsigned NFreePar() { return n_free_par; }
-  unsigned NZ() { return n_free_par*(n_free_par+1)/2; }
+  unsigned NZ() { return n_free_par*(n_free_par+1)/2; }*/
   TResonance Add(string name);
-  TResonance Res(unsigned i);
+ /* TResonance Res(unsigned i);
   TFitPar Par(unsigned i);
   void Clear();
   void SetParameters(double * par);
@@ -126,7 +130,7 @@ public:
   void Write(OCacheFile * cf);
   void Read(ICacheFile * cf);
   bool operator== (const TResonanceSet & x);
-  bool operator!= (const TResonanceSet & x);
+  bool operator!= (const TResonanceSet & x);*/
 };
 
 std::ostream & operator<< (std::ostream & os, TFitPar _p);
