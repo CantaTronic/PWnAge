@@ -56,6 +56,8 @@ set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 # 
 # The following folder will be included
 include_directories("${PROJECT_SOURCE_DIR}/include")
+
+add_subdirectory(libConfPars)
 # 
 # # looking for the sources in src/ dir
 # file(GLOB SOURCES src/*.cc)
@@ -68,9 +70,10 @@ main/test_JpsiToKKpi0.cpp
 src/TJpsiToKKpi0Const.cpp 
 src/TCache.cpp
 src/TPWAFunction.cpp
+# src/ConfigParser.cpp
 )#${SOURCES})
 # 
-# target_link_libraries(${PROJECT_NAME} ${GTEST_BOTH_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ConfPars)
 # 
 # #install our binaries (have no idea, why do we need this - they are still installed automatically without it)
 # #DECTINATION and TARGETS are options of install() command
