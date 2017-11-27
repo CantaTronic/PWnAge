@@ -1,6 +1,7 @@
 
 #include "TJpsiToKKpi0Const.h"  /*this is a header of the concrete reaction we want to make calculations for. Reactions are being inherited from TReaction abstract class*/
 #include "TPWAFunction.h"
+#include "TCache.h"
 // #include "TStat.h"
 #include <omp.h>
 #include <TUtils.h>
@@ -22,12 +23,12 @@ int main(int argc, char * argv[]) {
   
   //suppress verbose control print both about function pecularities and caching
   TPWAFunction::verbosity = -1;
-  TCache::verbosity = -1;
+  TCache::verbosity = -1;   //TODO: спрятать эту хрень из пользовательского интерфейса вместе с заголовком TCache.h
 
   setThrNums(argc, argv); //see TUtils.h
 
   //init CPU function calculation with a parameters list
- // TPWAFunctionCPU fcn("../resonances.ini"); 
+//   TPWAFunctionCPU fcn("../resonances.ini"); 
   
   /*
   

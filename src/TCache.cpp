@@ -1,6 +1,7 @@
 
 #include "TCache.h"
 /*#include "TResonanceSet.h"*/
+#include "TReaction.h"
 #include <iostream>
 using std::cerr;
 using std::endl;

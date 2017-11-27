@@ -3,7 +3,8 @@
 
 #include "OffloadDirectives.h"
 #include "TFloat.h"
-#include "TCache.h"
+// #include "TCache.h"
+#include "TReaction.h"
 
 PWA_START_OFFLOAD
 class TJpsiToKKpi0Const: public TReaction {
