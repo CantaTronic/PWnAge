@@ -43,12 +43,24 @@ data
 *cache
 
 #CMake-created things
-bin/*
-CMakeCache.txt
-cmake_install.cmake
+# bin/*
+# CMakeCache.txt
+# cmake_install.cmake
+# **/CMakeFiles/*
+# **/Makefile
+# 
+# lib*/CMakeFiles/*
+# lib*/cmake_install.*
+# test/gtest/*
+#ignore all cmake/gtest stuff except CMakeLists.txt
+**/MakeCache.txt
 **/CMakeFiles/*
-**/Makefile
-
-lib*/CMakeFiles/*
-lib*/cmake_install.*
-
+**Makefile
+**cmake_install.cmake 
+bin/*
+**MakeCache.txt
+gtest*
+gmock*
+**/*.so
+**/googletest*
+**/*.cmake
