@@ -46,10 +46,9 @@ data
 bin/*
 CMakeCache.txt
 cmake_install.cmake
-CMakeFiles/*
-Makefile
+**/CMakeFiles/*
+**/Makefile
 
-lib*/Makefile
 lib*/CMakeFiles/*
 lib*/cmake_install.*
 

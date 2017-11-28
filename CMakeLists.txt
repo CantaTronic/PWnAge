@@ -67,6 +67,7 @@ include_directories(libRes)
 add_subdirectory(libConfPars)
 add_subdirectory(libCommon)
 add_subdirectory(libRes)
+add_subdirectory(test)
 # 
 # # looking for the sources in src/ dir
 # file(GLOB SOURCES src/*.cc)
