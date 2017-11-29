@@ -7,6 +7,7 @@ using std::string;
 
 #include "TResonanceSet.h"/**/
 #include "TInputFiles.h"
+#include "deviceType.h"
 #include "ObjectiveFunction.h"/*
 #include "Minimizer.h"
 
@@ -39,8 +40,9 @@ protected:
 public:
   static double grad_step;
   static int verbosity;
-//   TPWAFunction(string ConfigFileName);
-  void Init(string ConfigFileName);/*
+  TPWAFunction(/*deviceType dev, string ConfigFileName*/);    
+  /*void*/ TPWAFunction Factory(/*std::string */deviceType dev);
+  void Init(deviceType dev, string ConfigFileName);/*
   virtual ~TPWAFunction();
   virtual void SetParameters(double * par) { resonances.SetParameters(par); }
   virtual void GetParameters(double * par) { resonances.GetParameters(par); }
@@ -59,5 +61,7 @@ public:
   virtual TFloat Min(unsigned i) { return resonances.Par(i).Min(); }
   virtual TFloat Max(unsigned i) { return resonances.Par(i).Max(); }
   virtual bool IsFixed(unsigned i) { return resonances.Par(i).IsFixed(); }*/
+private:
+
 };
 

@@ -16,6 +16,6 @@ void TPWAFunctionCPU::PrintMem(unsigned _nev) {
   TCache::PrintMem(mem_alloc, resonances.N(), _nev);
 }*/
 
-TPWAFunctionCPU::TPWAFunctionCPU(string ConfigFileName) {
-  Init(ConfigFileName);
+TPWAFunctionCPU::TPWAFunctionCPU(/*string ConfigFileName*/) {
+//   Init(ConfigFileName);
 }

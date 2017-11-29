@@ -5,11 +5,17 @@
 // 
 */
 #include "../libConfPars/ConfigParser.h"
+#include "TPWAFunctionCPU.h"
 #include <cstring>
 #include <iostream>
 using std::cerr;
 using std::endl;
+using std::cout;
 #include <omp.h>
+#include <stdexcept>
+#include <typeinfo>
+
+using std::domain_error;
 
 int TPWAFunction::verbosity = 1;
 double TPWAFunction::grad_step = 1e-5;
@@ -26,8 +32,7 @@ void TPWAFunctionPHI::NCaches() {
   #pragma offload target(mic:0) out(t_n_caches)
   {
     t_n_caches = omp_get_max_threads();
-  }
-  n_caches = t_n_caches;
+  }TPWAFunction
 }
 #endif
 
@@ -86,8 +91,33 @@ TPWAFunctionPHI::TPWAFunctionPHI(string ConfigFileName) {
 }
 #endif
 */
-void TPWAFunction::Init(string ConfigFileName) {
-  std::cout<<"Init\n";
+
+TPWAFunction  /*void*/ TPWAFunction::Factory(/*std::string*/ deviceType dev){
+//   TPWAFunction func;
+  switch (dev){
+    case 1:
+      cout<<"GPU"<<endl;
+      break;
+    case 2:
+      cout<<"PHI"<<endl;
+      break;
+    default:
+      cout<<"CPU"<<endl;
+      return new TPWAFunctionCPU();
+  }
+//   cout<<"Given fcn type: "<<typeid(func).name()<<endl;
+//   return func;
+}
+
+
+TPWAFunction::TPWAFunction(/*deviceType dev, string ConfigFileName*/) {
+//   Factory(dev);
+//   Init(dev, ConfigFileName);
+  
+}
+
+void TPWAFunction::Init(deviceType dev, string ConfigFileName) {
+  std::cout<<"Init "<<dev<<std::endl;
   ConfigParser conf(ConfigFileName, &resonances, &inputFiles);/*
   if(verbosity >= 3)
     resonances.PrintParameters();

@@ -1,16 +1,20 @@
 
 #include "TJpsiToKKpi0Const.h"  /*this is a header of the concrete reaction we want to make calculations for. Reactions are being inherited from TReaction abstract class*/
-#include "TPWAFunctionCPU.h"
+#include "TPWAFunction.h"
 #include "TCache.h"
 // #include "TStat.h"
 #include <omp.h>
 #include <TUtils.h>
+#include "deviceType.h"   //currently supported device types are CPU, GPU, PHI
 #include <iostream>
 using std::cerr;
 using std::cout;
 using std::endl;
 #include <iomanip>
 using std::setw;
+
+#include <typeinfo>
+#define quote(x) #x
 
 /*
  To be runned with a number of threads given. 
@@ -25,10 +29,16 @@ int main(int argc, char * argv[]) {
   TPWAFunction::verbosity = -1;
   TCache::verbosity = -1;   //TODO: спрятать эту хрень из пользовательского интерфейса вместе с заголовком TCache.h
 
-  setThrNums(argc, argv); //see TUtils.h
+  deviceType dev = setArguments(argc, argv);
 
   //init CPU function calculation with a parameters list
-  TPWAFunctionCPU fcn("/nfs/store2.jinr.ru/user/v/vtokareva/parallel_pwa/PWnAge/resonances.ini"); 
+  //move from the current situation
+//   TPWAFunctionCPU fcn("/nfs/store2.jinr.ru/user/v/vtokareva/parallel_pwa/PWnAge/resonances.ini"); 
+  //to the factory method:
+  TPWAFunction fcn/*(CPU,"/nfs/store2.jinr.ru/user/v/vtokareva/parallel_pwa/PWnAge/resonances.ini")*/;
+  fcn.Factory(dev);//выдумать здесь проверку на тему некорректных значений
+  
+  cout<<typeid(fcn).name()<<"\t"<< quote(fcn) <<"\n";
   
   /*
   
@@ -83,4 +93,5 @@ int main(int argc, char * argv[]) {
     fcn.TestGrad(10, n_thr_cpu[i]);
   }
 */
+  return 0;
 }
