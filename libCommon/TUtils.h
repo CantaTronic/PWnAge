@@ -18,37 +18,23 @@ using std::endl;
 Usefull utility functions for make main.cpp shorter and nicier
 */
 
-void testThrNumbs(){
-  /*prints number of threads in parallel region*/
-  #pragma omp parallel
-  {
-    #pragma omp single
-    cout<<"Set up "<<omp_get_num_threads()<<" threads"<<endl;
-  }
-  
-}
-
-void argCtrl(int argc, char * argv[]){
-  //control print of an arguments
-  cout<<"Arguments are given:"<<endl;
-  for (int i = 0; i<argc; i++)
-          cout<<"\t"<<i<<"\t"<<argv[i]<<endl; 
-  
-}
-
 void setThrNums(int argc, char * argv[]){
+  //set up number of threads. tested
     unsigned thrNum = 1;	//init thrNum
     if(argc > 1 && argv[1]>0) 
             thrNum = atoi(argv[1]);
     omp_set_num_threads(thrNum);  //set number of threads
-    testThrNumbs(); //checkout whether theads were set up
 }
 
 void devPrint(std::string devName)  {
+  /*just cute looking control print, nothing more*/
   cout<<"Starting "<<devName<<" calculations..."<<endl;
 }
 
 deviceType setDevice(int argc, char * argv[]){
+  /*
+   * The function which controlls the proper initial values for correct work of a program. 
+   */
     if (argc > 2){
         std::string dev = std::string(argv[2]);
         if (dev == "CPU") {
@@ -59,7 +45,7 @@ deviceType setDevice(int argc, char * argv[]){
           return GPU;
         } else if (dev == "PHI") {
           devPrint(dev);
-          return CPU;
+          return PHI;
         } else {
           throw std::domain_error ("Undefined device! Exiting...");
         }
@@ -68,12 +54,10 @@ deviceType setDevice(int argc, char * argv[]){
     }
 }
 
-int returnNum (int num) {
-  //simplest function to test tests
-  return num;
-}
-
 deviceType setArguments(int argc, char * argv[]) {
+  /*
+   The main function here. Parse comand line input and set up the device for calculations and number of threads (for CPU-like architectures)
+   */
   setThrNums(argc, argv); 
   try {
     deviceType dev = setDevice(argc, argv);
