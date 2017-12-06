@@ -5,11 +5,11 @@
 #include <stdlib.h>
 #include <omp.h>
 #include <string>
-// #include <cstring>
 #include <stdexcept>
 #include <exception>
 #include "deviceType.h"
 #include <cstdlib> 
+#include <fstream>
 
 using std::cout;
 using std::endl;
@@ -17,6 +17,14 @@ using std::endl;
 /*
 Usefull utility functions for make main.cpp shorter and nicier
 */
+
+void checkOpen(std::string configFileName, std::ifstream& ifl)  {
+  ifl.open(configFileName.c_str());
+  if (!ifl) {
+    std::cerr << "Unable open file for reading. Exiting..." << std::endl;
+    exit(-1);
+  }
+}
 
 void setThrNums(int argc, char * argv[]){
   //set up number of threads. tested
