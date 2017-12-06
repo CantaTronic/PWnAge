@@ -15,6 +15,8 @@ using std::cerr;
 using std::endl;
 #include <cstring>
 #include <omp.h>
+#include "TReaction.h"
+// TReaction * gReaction = 0;  //by 06.12.17
 
 TDataCache::TDataCache(TResonanceSet * r, string eventFileName, string cacheFileName)
 : TCache(r) {

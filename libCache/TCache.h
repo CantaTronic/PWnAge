@@ -3,9 +3,11 @@
 
 #include "OffloadDirectives.h"
 #include "cfloat.h"
-/*#include "TPtr.h"*/
+#include "TPtr.h"
+#include "TResonanceSet.h"
+#include <cstdlib>
 
-class TResonanceSet;
+// class TResonanceSet;
 
 /**
 dimensions:
@@ -29,7 +31,7 @@ data:
 
 
 class TCache {
-public:/*
+public:
   TCache();
   TCache(TResonanceSet * r);
   TCache(const TCache & x);              // copy-constructor
@@ -38,8 +40,8 @@ public:/*
   MemoryHandler * memHandler;
   static void PrintMem(unsigned & nbytes, unsigned n_res = 0,
                        unsigned n_ev = 0, const char * dev = 0);
-  unsigned mem_alloc;*/
-  static int verbosity;/*
+  unsigned mem_alloc;
+  static int verbosity;
 protected:
   virtual void Allocate() = 0;
   virtual void Cleanup();
@@ -51,7 +53,7 @@ protected:
   TPtr<TFloat> weight;
   TPtrVec<cfloat> precalc_factor;
 private:
-  TCache & operator= (const TCache & x); // copy-assignment*/
+  TCache & operator= (const TCache & x); // copy-assignment
 };
 
 PWA_END_OFFLOAD

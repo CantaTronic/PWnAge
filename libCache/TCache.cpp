@@ -1,14 +1,14 @@
 
 #include "TCache.h"
-/*#include "TResonanceSet.h"*/
-#include "TReaction.h"
+#include "TResonanceSet.h"
+// #include "TReaction.h"
 #include <iostream>
 using std::cerr;
 using std::endl;
 #include <cstring>
 
-TReaction * gReaction = 0;
-int TCache::verbosity = 0;/*
+// TReaction * gReaction = 0;
+int TCache::verbosity = 0;
 
 TCache::TCache()
 : memHandler(CPUMemoryHandler::Get()), mem_alloc(0), resonances(0),
@@ -50,14 +50,14 @@ void TCache::PrintMem(unsigned & nbytes, unsigned n_res, unsigned n_ev, const ch
     double nbytesd = nbytes;
     unsigned step = 0;
     while(nbytesd >= 1024) { nbytesd /= 1024; step++; }
-    fprintf(stderr, "Allocated %f %s of memory", nbytesd, nm[step].data());
-    if(dev) fprintf(stderr, " on %s", dev);
-    if(n_res || n_ev) fprintf(stderr, " for");
-    if(n_res) fprintf(stderr, " %u resonances", n_res);
-    if(n_res && n_ev) fprintf(stderr, " and");
-    if(n_res) fprintf(stderr, " %u events", n_ev);
-    fprintf(stderr, "\n");
-    fflush(stderr);
+    cerr<<"Allocated "<<nbytesd<<" "<<nm[step].data()<<" of memory"<<endl;
+    if(dev) cerr<<" on "<< dev<<endl;
+    if(n_res || n_ev) cerr<<" for"<<endl;
+    if(n_res) cerr<< n_res<<" resonances"<<endl;
+    if(n_res && n_ev) cerr<<" and"<<endl;
+    if(n_res) cerr<<n_ev<<" events"<<endl;
+    cerr<<"\n"<<endl;
+    cerr<<std::flush;
   }
   nbytes = 0;
 }
@@ -82,4 +82,4 @@ void CPUMemoryHandler::Zero(void * p, unsigned n_bytes) {
 void CPUMemoryHandler::Copy(void * to, const void * from, unsigned n_bytes) {
   memcpy(to, from, n_bytes);
 }
-*/
+

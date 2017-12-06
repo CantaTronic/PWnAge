@@ -11,7 +11,7 @@ public:
   TCalcCache();
   TCalcCache(TCache * x, unsigned offset = 0, unsigned _nev = 0);
   virtual ~TCalcCache();
- /* virtual void FCN(const TFloat norm, TFloat & val, const TFloat * D = 0, const TFloat * N1 = 0, TFloat * grad = 0, TFloat * Z = 0);
+  virtual void FCN(const TFloat norm, TFloat & val, const TFloat * D = 0, const TFloat * N1 = 0, TFloat * grad = 0, TFloat * Z = 0);
   virtual void Norm(TFloat & val, const TFloat * D = 0, TFloat * N1 = 0);
   virtual TFloat SumW() { return sum_w; }
   virtual void SetParameters(double * par);
@@ -48,6 +48,6 @@ private:
   TCalcCache(const TCalcCache & x);              // copy-constructor
   TCalcCache & operator= (const TCalcCache & x); // copy-assignment
 //   TCalcCache (TCalcCache && x);                  // move-constructor
-//   TCalcCache & operator= (TCalcCache&& x);       // move-assignment*/
+//   TCalcCache & operator= (TCalcCache&& x);       // move-assignment
 };
 PWA_END_OFFLOAD

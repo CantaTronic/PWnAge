@@ -16,6 +16,8 @@ using std::endl;
 #include <iomanip>
 using std::setw;
 #include <omp.h>
+#include "TReaction.h"
+TReaction * gReaction = 0;  //by 06.12.17
 
 void TCalcCache::SetParameters(double * par) {
   resInst->SetParameters(par);
