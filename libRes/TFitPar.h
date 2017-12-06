@@ -17,12 +17,12 @@ protected:
 public:
   TFitPar(TParArray * _par, unsigned _offset): par(_par), offset(_offset) { } //инициализация
   TFitPar(const TFitPar & x): par(x.par), offset(x.offset) { }
- /* TFitPar & operator= (const TFitPar & x);  //сравнение значений параметров 
-  string Name();
-  const char * CName() { return Name().c_str(); }*/
+  TFitPar & operator= (const TFitPar & x);  //сравнение значений параметров 
+  std::string Name();
+  const char * CName() { return Name().c_str(); }
   void Set(TFloat v, TFloat step = 0.01); //установка значений параметров
   void Set(TFloat v, TFloat min, TFloat max, TFloat step = 0.01);
- /* void operator= (TFloat v) { par->SetParameter(offset, v); }
+  void operator= (TFloat v) { par->SetParameter(offset, v); }
   operator TFloat() { return par->parameters[offset]; }
   TParType Type() const { return par->types[offset]; }
   bool Changed() { return par->types[offset] == kChanged; }
@@ -31,7 +31,7 @@ public:
   bool IsFixed() { return par->types[offset] == kFixed; }
   TFloat Min() { return par->minima[offset]; }
   TFloat Max() { return par->maxima[offset]; }
-  TFloat Step() { return par->steps[offset]; }*/
+  TFloat Step() { return par->steps[offset]; }
 };
 
 PWA_END_OFFLOAD

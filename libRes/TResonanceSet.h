@@ -35,7 +35,7 @@ public:
   // add info on reactions [kinematic channels] it contributes to
   // need to have a list of globally defined reaction and channels?
   // additionally introduce decays maechanisms (--> modes + couplings)
- /* TFitPar Par(unsigned i);
+  TFitPar Par(unsigned i);
   TFitPar _M() { return Par(0); }
   TFitPar _G() { return Par(1); }
   TFitPar _r() { return Par(2); }
@@ -54,7 +54,7 @@ public:
   void P(unsigned v) { par->quantumNumbers[offsetQN+1] = v; }
   void C(unsigned v) { par->quantumNumbers[offsetQN+2] = v; }
   void type(unsigned v) { par->quantumNumbers[offsetQN+3] = v; }
-  TFloat & SymmetryMultiplier(unsigned i) { return par->symmetryMultipliers[offsetSM+i]; }*/
+  TFloat & SymmetryMultiplier(unsigned i) { return par->symmetryMultipliers[offsetSM+i]; }
   // need to have channel specif data
   // productionCouplings[jpsi_decay_channl][kinematic_channel]
 };
@@ -65,16 +65,16 @@ class OCacheFile;
 class TResonanceSet: protected TParArray {
 public:
   TResonanceSet(): TParArray() { }
-/*  TResonanceSet(const TResonanceSet & x): TParArray(x) { }
+  TResonanceSet(const TResonanceSet & x): TParArray(x) { }
   TResonanceSet & operator= (const TResonanceSet & x); // copy-assignment
   virtual ~TResonanceSet() { }
   unsigned L() { return lmax; }
   unsigned N() { return names.size(); }
   unsigned NPar() { return parameters.size(); }
   unsigned NFreePar() { return n_free_par; }
-  unsigned NZ() { return n_free_par*(n_free_par+1)/2; }*/
+  unsigned NZ() { return n_free_par*(n_free_par+1)/2; }
   TResonance Add(string name);
- /* TResonance Res(unsigned i);
+  TResonance Res(unsigned i);
   TFitPar Par(unsigned i);
   void Clear();
   void SetParameters(double * par);
@@ -85,7 +85,7 @@ public:
   void Write(OCacheFile * cf);
   void Read(ICacheFile * cf);
   bool operator== (const TResonanceSet & x);
-  bool operator!= (const TResonanceSet & x);*/
+  bool operator!= (const TResonanceSet & x);
 };
 
 std::ostream & operator<< (std::ostream & os, TFitPar _p);

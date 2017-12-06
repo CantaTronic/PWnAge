@@ -5,6 +5,8 @@ set(Res_SRC
     TParType.h
     TParArray.h
     TFitPar.h
+    TResonanceSet.h
+    TResonanceSet.cpp
 )
 
 # Declare the library

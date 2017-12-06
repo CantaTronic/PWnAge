@@ -24,10 +24,10 @@ struct TParArray {
   unsigned lmax;
   unsigned n_free_par;
   TParArray(): lmax(0), n_free_par(0) { }
- /* virtual ~TParArray() { }
+  virtual ~TParArray() { }
   virtual void UpdateL();
   virtual void UpdateNFreePar();
-  virtual void SetParameter(unsigned i, TFloat v);*/
+  virtual void SetParameter(unsigned i, TFloat v);
 };
 
 PWA_END_OFFLOAD
