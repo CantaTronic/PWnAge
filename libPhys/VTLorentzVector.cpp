@@ -74,6 +74,5 @@ void VTLorentzVector::Boost(TFloat bx, TFloat by, TFloat bz)
 void VTLorentzVector::Print() const
 {
   // Print the TLorentz vector components as (x,y,z,t) and (P,eta,phi,E) representations
-  printf("(x,y,z,t)=(%f,%f,%f,%f)",
-	 fP.X(),fP.Y(),fP.Z(),fE);
+   std::cout<<"(x,y,z,t)=("<<fP.X()<<","<<fP.Y()<<","<<fP.Z()<<","<<fE<<")"<<std::endl;
 }

@@ -87,5 +87,5 @@ TFloat operator * (const VTVector3 & a, const VTVector3 & b) {
 void VTVector3::Print()const
 {
    //print vector parameters
-   printf("(x,y,z)=(%f,%f,%f)",X(),Y(),Z());
+     std::cout<<"(x,y,z)=("<<X()<<","<<Y()<<","<<Z()<<")"<<std::endl;
 }
