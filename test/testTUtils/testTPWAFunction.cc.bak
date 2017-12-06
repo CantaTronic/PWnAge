@@ -1,0 +1,29 @@
+#include "gtest/gtest.h"
+#include "TPWAFunction.h"
+#include "deviceType.h"
+#include <iostream>
+#include <typeinfo>
+#define quote(x) #x
+
+class testTPWAFunction : public ::testing::Test {
+  
+testTPWAFunction(){
+//     TPWAFunction * fcn;
+}
+
+virtual ~testTPWAFunction();
+
+// before each test).
+virtual void SetUp();
+
+// immediately after each test
+virtual void TearDown();
+
+};
+
+TEST(testTPWAFunction, CreateTest)  {
+  TPWAFunction fcn;
+//   EXPECT_EQ ("test TestPWA",   fcn.test ("TestPWA"));
+//   fcn = TPWAFunction::Create(CPU,"/nfs/store2.jinr.ru/user/v/vtokareva/parallel_pwa/PWnAge/resonances.ini");
+//   cout<<typeid(fcn).name()<<"\t"<< quote(fcn) <<"\n";
+}

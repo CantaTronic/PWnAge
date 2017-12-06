@@ -37,7 +37,9 @@ set_target_properties(libgmock PROPERTIES
 
 # I couldn't make it work with INTERFACE_INCLUDE_DIRECTORIES
 include_directories("${source_dir}/googletest/include"
-                    "${source_dir}/googlemock/include")
+                    "${source_dir}/googlemock/include"
+                    
+                    "${PROJECT_SOURCE_DIR}/include")
 
 add_subdirectory(testTUtils)
-add_subdirectory(testTPWAFunction)
+# add_subdirectory(testTPWAFunction)

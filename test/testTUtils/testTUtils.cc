@@ -4,22 +4,25 @@
 #include <vector>
 #include <stdexcept>
 #include "omp.h"
+#include <fstream>
 
 using std::vector;
+using  std::ifstream;
 
 //The basic tests for TUtils.h file
 
 namespace ReadArgs{
   
   int argcF = 3;
-  char * argvF1[] = {"prog_name", "4", "CPU"}; 
-  char * argvF2[] = {"prog_name", "4", "GPU"}; 
-  char * argvF3[] = {"prog_name", "4", "PHI"}; 
-  char * argvF4[] = {"prog_name", "4", "any"};
-  char * argvF5[] = {"prog_name"}; 
+  char PName[] = "prog_name";
+  char * argvF1[] = {PName, "4", "CPU"}; 
+  char * argvF2[] = {PName, "4", "GPU"}; 
+  char * argvF3[] = {PName, "4", "PHI"}; 
+  char * argvF4[] = {PName, "4", "any"};
+  char * argvF5[] = {PName}; 
   
  
-TEST (testSetDevice, PositiveNos){
+TEST (testTUtils, testSetDevice){
     EXPECT_EQ (CPU, setDevice(argcF, argvF1));
     EXPECT_EQ (GPU, setDevice(argcF, argvF2));
     EXPECT_EQ (PHI, setDevice(argcF, argvF3));
@@ -27,7 +30,7 @@ TEST (testSetDevice, PositiveNos){
     EXPECT_THROW(setDevice(1, argvF5),std::domain_error);
 }
 
-TEST (TestSetThrNums, PositiveNos) {
+TEST (testTUtils, TestSetThrNums) {
   setThrNums(argcF, argvF1); 
   #pragma omp parallel
   {
@@ -37,3 +40,18 @@ TEST (TestSetThrNums, PositiveNos) {
 }
 
 }
+
+namespace ReadFiles{
+  
+  ifstream ifl;
+  std::string configFileNameF = "config.ini";
+//   std::string configFileNameT = "/nfs/store2.jinr.ru/user/v/vtokareva/parallel_pwa/PWnAge/resonances.ini";
+  
+TEST (testTUtils, TestCheckOpen) {
+  EXPECT_EXIT (checkOpen(configFileNameF,ifl),::testing::ExitedWithCode(255),  "Unable open file for reading. Exiting...");
+//   EXPECT_DEATH_IF_SUPPORTED (checkOpen(configFileNameT,ifl),/*::testing::ExitedWithCode(255), */ "Unable open file for reading. Exiting...");
+}
+
+}
+
+
