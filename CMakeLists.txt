@@ -27,7 +27,7 @@ project(PWnAge)
 # Still don't set the output folder where our program will be created - maybe, later?
 
 # #compilation/linking keys
-# add_definitions(-Wall -O2 -fPIC -std=c++0x -g )
+add_definitions(-Wall -O2 -fPIC -std=c++11 -g -Wno-write-strings)
 # 
 # #CMAKE_BINARY_DIR is the top-level directory of the building tree
 #CMAKE_SOURCE_DIR is dir from which we will start to make project
@@ -59,6 +59,9 @@ include_directories("${PROJECT_SOURCE_DIR}/include")
 include_directories(libConfPars)
 include_directories(libCommon)
 include_directories(libRes)
+include_directories(libPhys)
+include_directories(libCache)
+include_directories(libMemHandle)
 
 # link_directories(libConfPars)
 # link_directories(libCommon)
@@ -67,6 +70,9 @@ include_directories(libRes)
 add_subdirectory(libConfPars)
 add_subdirectory(libCommon)
 add_subdirectory(libRes)
+add_subdirectory(libPhys)
+add_subdirectory(libCache)
+add_subdirectory(libMemHandle)
 add_subdirectory(test)
 # 
 # # looking for the sources in src/ dir
@@ -78,13 +84,14 @@ add_executable(${PROJECT_NAME}
 #list of sources
 main/test_JpsiToKKpi0.cpp 
 src/TJpsiToKKpi0Const.cpp 
-src/TCache.cpp
+# src/TCache.cpp
 src/TPWAFunction.cpp
+# src/TResonanceSet.cpp
 src/TPWAFunctionCPU.cpp
 # libConfPars/ConfigParser.cpp
 )#${SOURCES})
 # 
-target_link_libraries(${PROJECT_NAME} ConfPars Common Res)
+target_link_libraries(${PROJECT_NAME} ConfPars Common Res Phys Cache MemHandle)
 # 
 # #install our binaries (have no idea, why do we need this - they are still installed automatically without it)
 # #DECTINATION and TARGETS are options of install() command

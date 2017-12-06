@@ -4,9 +4,10 @@ cmake_minimum_required(VERSION 2.8)
 set(ConfPars_SRC
     ConfigParser.h
     ConfigParser.cpp
+    TInputFiles.h
 )
 
-include_directories(libRes)
+# include_directories(libRes)
 # link_directories(../libRes)
 
 # Declare the library

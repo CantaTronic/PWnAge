@@ -3,20 +3,29 @@
 #include "TFitPar.h"
 #include "TInputFiles.h"
 #include "TGlobals.h"
+#include "TUtils.h"
 #include <fstream>
 #include <iostream>
 #include <cstdlib>
+#include <string>
 using std::cerr;
 using std::endl;
+using std::string;
+
+// enum ParToGet {dataEventFile = 1, mcEventFile};
+
+// void ConfigParser::getByFlag(string flag, string name, ParToGet param) {
+//   if(flag == name) {
+//     Get(inputFiles->param);
+//     continue;
+//   }
+// }
 
 ConfigParser::ConfigParser(string configFileName, TResonanceSet * set, TInputFiles * inputFiles) {
+//   ParToGet par = dataEventFile;
   TResonance res;
   std::ifstream ifile;
-  ifile.open(configFileName.c_str());
-  if (!ifile) {
-    std::cerr << "Unable open file " << configFileName << " for reading. Exiting..." << std::endl;
-    exit(-1);
-  }
+  checkOpen(configFileName, ifile);
   while(1) {
     string line;
     bool not_eof = std::getline(ifile, line); // get next line
@@ -29,12 +38,13 @@ ConfigParser::ConfigParser(string configFileName, TResonanceSet * set, TInputFil
     iss.clear();
     iss.str(line);
     iss.seekg(0);
+//     std::cout<<dataEventFile<<std::endl;
     // begin parsing line
     string flag, delim;
     iss >> flag >> delim;
     if(flag == "" || delim != "=")
       continue; // not parameter string
-  /*  if(flag == "dataEventFile") {
+    if(flag == "dataEventFile") {
       Get(inputFiles->dataEventFile);
       continue;
     }
@@ -49,11 +59,11 @@ ConfigParser::ConfigParser(string configFileName, TResonanceSet * set, TInputFil
     if(flag == "mcCacheFile") {
       Get(inputFiles->mcCacheFile);
       continue;
-    }*/
-//     if(flag == "resonance") { // new resonance begins
-//       res = set->Add(Get<string>()); // put resonance in set
-//       continue;
-//     }
+    }
+    if(flag == "resonance") { // new resonance begins
+      res = set->Add(Get<string>()); // put resonance in set
+      continue;
+    }
 //     if(!res) continue;
 //     // read resonance parameter only if any resonances added into set
 //     if(flag == "M") {
@@ -82,6 +92,18 @@ ConfigParser::ConfigParser(string configFileName, TResonanceSet * set, TInputFil
   }
   ifile.close();
 }
+
+template<class T>
+void ConfigParser::Get(T & v) {
+  iss>>v;
+}
+template<class T>
+T ConfigParser::Get() {
+  T v;
+  Get(v);
+  return v;
+}
+
 /*
 void ConfigParser::GetFitPar(TFitPar p, double _v) {
   string type = "free";
@@ -112,7 +134,7 @@ void ConfigParser::GetProdPhase(TFitPar p, double _v) {
   }
   p.Set(_v*_pi/180., _vmin*_pi/180., _vmax*_pi/180.);
 }
-/*
+
 void ConfigParser::GetSymmetryMultiplier(TResonance & res) {
   for(unsigned i = 0; i < 3; i++) {
     TFloat m = 0;

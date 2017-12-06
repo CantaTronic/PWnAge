@@ -24,6 +24,10 @@ public:
    * Clears memory
    */
   ~ConfigParser() { }
+  
+  ConfigParser(){};
+  
+  std::string test (std::string str) {return "test "+str;}
 private:
   /*!Method for finding TFitPar type parameter
    *
@@ -41,20 +45,10 @@ private:
 /*  void GetFitPar(TFitPar p, double _v = 0);
   void GetProdPhase(TFitPar p, double _v = 0);
   void GetSymmetryMultiplier(TResonance & res);*/
- /* template<class T>
+//   void getByFlag(std::string flag, std::string name, ParToGet param);
+  template<class T>
   void Get(T & v);
   template<class T>
-  T Get();*/
+  T Get();
   std::istringstream iss; //! line currently being parsed
 };
-/*
-template<class T>
-void ConfigParser::Get(T & v) {
-  iss>>v;
-}
-template<class T>
-T ConfigParser::Get() {
-  T v;
-  Get(v);
-  return v;
-}*/

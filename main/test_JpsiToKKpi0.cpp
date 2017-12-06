@@ -17,8 +17,8 @@ using std::setw;
 #define quote(x) #x
 
 /*
- To be runned with a number of threads given. 
- Example: ./code 4
+ To be runned with a device and number of threads given. 
+ Example: ./code CPU 4
  */
 
 int main(int argc, char * argv[]) {
@@ -31,21 +31,17 @@ int main(int argc, char * argv[]) {
 
   deviceType dev = setArguments(argc, argv);
 
-  //init CPU function calculation with a parameters list
-  //move from the current situation
-//   TPWAFunctionCPU fcn("/nfs/store2.jinr.ru/user/v/vtokareva/parallel_pwa/PWnAge/resonances.ini"); 
   //to the factory method:
-  TPWAFunction fcn/*(CPU,"/nfs/store2.jinr.ru/user/v/vtokareva/parallel_pwa/PWnAge/resonances.ini")*/;
-  fcn.Factory(dev);//выдумать здесь проверку на тему некорректных значений
+  TPWAFunction * fcn;
+  fcn = TPWAFunction::Create(dev,"resonances.ini");//выдумать здесь проверку на тему некорректных значений
+//     fcn = TPWAFunction::Create(dev,"/nfs/store2.jinr.ru/user/v/vtokareva/parallel_pwa/PWnAge/non-exist.ini");//выдумать здесь проверку на тему некорректных значений
   
-  cout<<typeid(fcn).name()<<"\t"<< quote(fcn) <<"\n";
-  
+//   cout<<typeid(fcn).name()<<"\t"<< quote(fcn) <<"\n";
   /*
-  
   TFloat time_call;
   double par[100];
   cerr<<" ==== FUMILI ===="<<endl;
-  fcn.GetParameters(par);
+  fcn->GetParameters(par);
   time_call = fcn.Fit(ROOTMinimizer::FUMILI);
   cerr<<setw(3)<<"12"<<' '<<time_call<<endl;*/
   
