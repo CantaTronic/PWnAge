@@ -10,7 +10,7 @@ set(Res_SRC
     TResonanceSet.h
     TResonanceSet.cpp
     TResonance.h
-#     TResonance.cpp
+    TResonance.cpp
 )
 
 # Declare the library
