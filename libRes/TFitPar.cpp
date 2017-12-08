@@ -6,13 +6,15 @@
 
 using std::setw;
 
-const string TFitPar::par_names[5] = {"M", "G", "r", "Co", "Ph"};
+const string TFitPar::par_names[5] = {"M", "G", "r", "Co", "Ph"}; //all possible paramaters names
 
 string TFitPar::Name() {
+  /**/
   return par->names[offset/TResonance::nPar]+"_"+par_names[offset%TResonance::nPar];
 }
 
 TFitPar & TFitPar::operator= (const TFitPar & x) {
+  /*Assign TFitPar object on the left side to given TFitPar x*/
   if(this == &x) return *this;
   par = x.par;
   offset = x.offset;
