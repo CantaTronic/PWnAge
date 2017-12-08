@@ -42,6 +42,8 @@ mail.sh
 data
 *cache
 
+src/*
+
 #CMake-created things
 # bin/*
 # CMakeCache.txt

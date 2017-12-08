@@ -1,23 +1,17 @@
-# Folder structure:
+# Folder structure (to be updated):
 #
 # |
 # +--CMakeList.txt (with C++11 content)
-# +--include/
+# +--libConfPars
 # |  |
-# |  +--*.h
-# |  +--TJpsiToKKpi0Const.h
-# |  +--TFloat.h
-# |  +--TChache.h
-# |  +--TGlobals.h
-# |  +--cfloat.h
-# |
-# +--src/
-# |  |
-# |  +--test_JpsiToKKpi0.cpp
-# |  +--TJpsiToKKpi0Const.cpp 
-# |  +--TCache.cpp
-# |  +--*.cc
-# -
+# |  +--
+# +--libCommon
+# +--libRes
+# +--libPhys
+# +--libCache
+# +--libMemHandle
+# +--Other
+# +--test
 
 # Specify the minimum version for CMake
 cmake_minimum_required(VERSION 2.6)
@@ -55,7 +49,6 @@ endif()
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 # 
 # The following folder will be included
-# include_directories("${PROJECT_SOURCE_DIR}/include")
 include_directories(libConfPars)
 include_directories(libCommon)
 include_directories(libRes)
@@ -63,10 +56,6 @@ include_directories(libPhys)
 include_directories(libCache)
 include_directories(libMemHandle)
 include_directories(Other)
-
-# link_directories(libConfPars)
-# link_directories(libCommon)
-# link_directories(libRes)
 
 add_subdirectory(libConfPars)
 add_subdirectory(libCommon)
@@ -77,21 +66,8 @@ add_subdirectory(libMemHandle)
 add_subdirectory(Other)
 add_subdirectory(test)
 # 
-# # looking for the sources in src/ dir
-# file(GLOB SOURCES src/*.cc)
-# 
 # #compile test_JpsiToKKpi0.cc into a target "PWnAge" 
-add_executable(${PROJECT_NAME} 
-
-#list of sources
-main/test_JpsiToKKpi0.cpp 
-# src/TJpsiToKKpi0Const.cpp 
-# # src/TCache.cpp
-# src/TPWAFunction.cpp
-# # src/TResonanceSet.cpp
-# src/TPWAFunctionCPU.cpp
-# libConfPars/ConfigParser.cpp
-)#${SOURCES})
+add_executable(${PROJECT_NAME} main/test_JpsiToKKpi0.cpp)
 # 
 target_link_libraries(${PROJECT_NAME} ConfPars Common Res Phys Cache MemHandle Other)
 # 
