@@ -44,7 +44,7 @@ public:
   TPWAFunction(/*deviceType dev, string ConfigFileName*/);    
   static /*void*/ TPWAFunction * Create (deviceType dev, std::string ConfigFileName);
   void Init(string ConfigFileName);
-//   virtual ~TPWAFunction();
+  virtual ~TPWAFunction();
   virtual void SetParameters(double * par) { resonances.SetParameters(par); }
   virtual void GetParameters(double * par) { resonances.GetParameters(par); }/*
   virtual void Eval(double * par, double & val, double * grad = 0, double * Z = 0);*/

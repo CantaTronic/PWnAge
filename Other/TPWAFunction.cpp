@@ -47,36 +47,44 @@ TPWAFunction  * TPWAFunction::Create (deviceType dev, string ConfigFileName){
 TPWAFunction::TPWAFunction() {}
 
 void TPWAFunction::Init(string ConfigFileName) {
+  /*Read resonances from config file, 
+   *put them into caches it is creating, then map caches to threads or graphical units*/
   std::cout<<"Init "<<std::endl;
   ConfigParser conf(ConfigFileName, &resonances, &inputFiles);  //read resonances
 //   if(verbosity >= 3)
     resonances.PrintParameters(); //control print
   
   NCaches();  //set up number of caches
+  
+  //===creating and distribute data caches to threads===
   data = new TDataCache(&resonances, inputFiles.dataEventFile, inputFiles.dataCacheFile);   //loading caches
   mem_alloc = data->mem_alloc;  
-  calc_data.resize(n_caches, 0);
+  calc_data.resize(n_caches, 0);  //resize vector with size equival to number of caches elements size 
   for(unsigned thr = 0; thr < n_caches; thr++) {
     unsigned blockSize = data->NEv()/n_caches;  //split data into blocks: equal numbers of events per cache
     unsigned offset = thr*blockSize;    //...and offset
     if(thr == n_caches-1) blockSize = data->NEv()-offset;
     calc_data[thr] = CreateCalcCache(data, offset, blockSize);  //here we associate every thread with a concrete cache it'll be responsible for
   }
-//   PrintMem(data->NEv());
-//   mc = new TDataCache(&resonances, inputFiles.mcEventFile, inputFiles.mcCacheFile);
-//   mem_alloc = mc->mem_alloc;
-//   calc_mc.resize(n_caches, 0);
-//   for(unsigned thr = 0; thr < n_caches; thr++) {
-//     unsigned blockSize = mc->NEv()/n_caches;
-//     unsigned offset = thr*blockSize;
-//     if(thr == n_caches-1) blockSize = mc->NEv()-offset;
-//     calc_mc[thr] = CreateCalcCache(mc, offset, blockSize);
-//   }
-//   PrintMem(mc->NEv());
+  PrintMem(data->NEv());  //control print about size of allocated memory. Will work only if we have verbosity >0
+  
+  //===creating and distribute MC caches to threads===
+  mc = new TDataCache(&resonances, inputFiles.mcEventFile, inputFiles.mcCacheFile);
+  mem_alloc = mc->mem_alloc;
+  calc_mc.resize(n_caches, 0); //resize vector with size equival to number of caches elements size 
+  for(unsigned thr = 0; thr < n_caches; thr++) {
+    unsigned blockSize = mc->NEv()/n_caches;
+    unsigned offset = thr*blockSize;
+    if(thr == n_caches-1) blockSize = mc->NEv()-offset;
+    calc_mc[thr] = CreateCalcCache(mc, offset, blockSize);
+  }
+  PrintMem(mc->NEv());
   
 }
-/*
+
 TPWAFunction::~TPWAFunction() {
+  /* Destroy all caches 
+   */
   for(unsigned thr = 0; thr < n_caches; thr++) {
     DestroyCalcCache(calc_data[thr]);
     DestroyCalcCache(calc_mc[thr]);
@@ -84,7 +92,7 @@ TPWAFunction::~TPWAFunction() {
   delete data;
   delete mc;
 }
-
+/*
 void TPWAFunction::Norm(double * par) {
   double start = omp_get_wtime();
   norm = 0;
