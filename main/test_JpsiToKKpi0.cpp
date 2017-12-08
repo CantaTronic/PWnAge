@@ -26,8 +26,8 @@ int main(int argc, char * argv[]) {
   gReaction = new TJpsiToKKpi0Const;
   
   //suppress verbose control print both about function pecularities and caching
-  TPWAFunction::verbosity = 3; //TODO: организовать какой-то один переключатель для включения/выключения контрольной печати 
-  TCache::verbosity = 3;   //TODO: спрятать эту хрень из пользовательского интерфейса вместе с заголовком TCache.h
+  TPWAFunction::verbosity = 0; //TODO: организовать какой-то один переключатель для включения/выключения контрольной печати 
+  TCache::verbosity = 0;   //TODO: спрятать эту хрень из пользовательского интерфейса вместе с заголовком TCache.h
 
   deviceType dev = setArguments(argc, argv);
 
