@@ -16,43 +16,6 @@ using std::setw;
 
 const unsigned TResonance::nPar = 5;
 const unsigned TResonance::nQN = 4;
-const string TFitPar::par_names[5] = {"M", "G", "r", "Co", "Ph"};
-
-string TFitPar::Name() {
-  return par->names[offset/TResonance::nPar]+"_"+par_names[offset%TResonance::nPar];
-}
-
-TFitPar & TFitPar::operator= (const TFitPar & x) {
-  if(this == &x) return *this;
-  par = x.par;
-  offset = x.offset;
-  return *this;
-}
-
-void TFitPar::Set(TFloat v, TFloat step) {
-  par->parameters[offset] = v;
-  par->types[offset] = step?kChanged:kFixed;
-  par->UpdateNFreePar();
-  par->minima[offset] = 0;
-  par->maxima[offset] = 0;
-  par->steps[offset] = step;
-}
-
-void TFitPar::Set(TFloat v, TFloat min, TFloat max, TFloat step) {
-  par->parameters[offset] = v;
-  par->types[offset] = kChanged;
-  par->UpdateNFreePar();
-  par->minima[offset] = min;
-  par->maxima[offset] = max;
-  par->steps[offset] = step;
-}
-
-std::ostream & operator<< (std::ostream & os, TFitPar _p) {
-  os<<setw(15)<<_p.Name()<<":"
-    <<setw(10)<<static_cast<TFloat>(_p)
-    <<" ["<<setw(10)<<_p.Min()<<","<<setw(10)<<_p.Max()<<"] ("<<_p.Changed()<<")";
-  return os;
-}
 
 TResonance & TResonance::operator= (const TResonance & x) {
   if(this == &x) return *this;

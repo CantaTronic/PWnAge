@@ -4,9 +4,13 @@ cmake_minimum_required(VERSION 2.8)
 set(Res_SRC
     TParType.h
     TParArray.h
+    TParArray.cpp
     TFitPar.h
+    TFitPar.cpp
     TResonanceSet.h
     TResonanceSet.cpp
+    TResonance.h
+#     TResonance.cpp
 )
 
 # Declare the library

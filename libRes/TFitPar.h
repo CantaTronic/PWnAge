@@ -34,4 +34,6 @@ public:
   TFloat Step() { return par->steps[offset]; }
 };
 
+std::ostream & operator<< (std::ostream & os, TFitPar _p);
+
 PWA_END_OFFLOAD
