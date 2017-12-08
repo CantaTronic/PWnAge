@@ -51,7 +51,7 @@ void TPWAFunction::Init(string ConfigFileName) {
    *put them into caches it is creating, then map caches to threads or graphical units*/
   std::cout<<"Init "<<std::endl;
   ConfigParser conf(ConfigFileName, &resonances, &inputFiles);  //read resonances
-//   if(verbosity >= 3)
+  if(verbosity >= 3)
     resonances.PrintParameters(); //control print
   
   NCaches();  //set up number of caches
