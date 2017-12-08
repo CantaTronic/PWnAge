@@ -6,9 +6,9 @@
 
 class TPWAFunctionCPU: public TPWAFunction {
 public:
-  TPWAFunctionCPU(std::string);/*
+  TPWAFunctionCPU(std::string);
 protected:
   virtual void NCaches();
   virtual TCalcCache * CreateCalcCache(TCache * x, unsigned offset, unsigned blockSize);
-  virtual void PrintMem(unsigned _nev);*/
+  virtual void PrintMem(unsigned _nev);
 };

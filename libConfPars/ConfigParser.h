@@ -42,9 +42,9 @@ private:
    * \param [in] _vmax the step size to return if not given in the config file
    * \return     value of the parameter with the given name
    */
-/*  void GetFitPar(TFitPar p, double _v = 0);
+  void GetFitPar(TFitPar p, double _v = 0);
   void GetProdPhase(TFitPar p, double _v = 0);
-  void GetSymmetryMultiplier(TResonance & res);*/
+  void GetSymmetryMultiplier(TResonance & res);
 //   void getByFlag(std::string flag, std::string name, ParToGet param);
   template<class T>
   void Get(T & v);

@@ -17,23 +17,24 @@ class TDataCache;
 // https://isocpp.org/wiki/faq/pointers-to-members
 // class provides FCN, passes resonance parameters to a minimizer
 class TPWAFunction: public ObjectiveFunction {
-  /*
-protected:
-  unsigned n_thr;
-  vector<TCalcCache*> calc_data, calc_mc;
-  TDataCache * data, * mc;*/
+  
+protected:/*
+  unsigned n_thr;*/
+  vector<TCalcCache*> calc_data, calc_mc;   //actually calculated data in memory (TODO: rewrite into lists to safe time for big inputs?)
+  TDataCache * data, * mc;    //pointers to caches with data
   TInputFiles inputFiles;
   TResonanceSet resonances;
-  /*
+  
 //   TDevice dev;
-  unsigned n_caches;
-  unsigned mem_alloc;
+  unsigned n_caches;  //number of caches we have (equal to number of GPU cards of CPU threads)
+ unsigned mem_alloc;  //how much memory do we use so far
+ /* 
   TFloat norm;
   TFloat * deltaPar;
-  TFloat * N1;
+  TFloat * N1;*/
   virtual void NCaches() = 0;
   virtual TCalcCache * CreateCalcCache(TCache * x, unsigned offset, unsigned blockSize) = 0;
-  virtual void PrintMem(unsigned _nev) = 0;*/
+  virtual void PrintMem(unsigned _nev) = 0;
   virtual void DestroyCalcCache(TCalcCache* & x);
  /* virtual void Norm(double * par);
   virtual void Eval(double * par, double * grad, double * Z);*/

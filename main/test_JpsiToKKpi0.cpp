@@ -26,22 +26,21 @@ int main(int argc, char * argv[]) {
   gReaction = new TJpsiToKKpi0Const;
   
   //suppress verbose control print both about function pecularities and caching
-  TPWAFunction::verbosity = -1;
-  TCache::verbosity = -1;   //TODO: спрятать эту хрень из пользовательского интерфейса вместе с заголовком TCache.h
+  TPWAFunction::verbosity = 3; //TODO: организовать какой-то один переключатель для включения/выключения контрольной печати 
+  TCache::verbosity = 3;   //TODO: спрятать эту хрень из пользовательского интерфейса вместе с заголовком TCache.h
 
   deviceType dev = setArguments(argc, argv);
 
   //to the factory method:
   TPWAFunction * fcn;
-  fcn = TPWAFunction::Create(dev,"resonances.ini");//выдумать здесь проверку на тему некорректных значений
-//     fcn = TPWAFunction::Create(dev,"/nfs/store2.jinr.ru/user/v/vtokareva/parallel_pwa/PWnAge/non-exist.ini");//выдумать здесь проверку на тему некорректных значений
+  fcn = TPWAFunction::Create(dev,"resonances.ini");
   
-//   cout<<typeid(fcn).name()<<"\t"<< quote(fcn) <<"\n";
-  /*
+
+  
   TFloat time_call;
   double par[100];
   cerr<<" ==== FUMILI ===="<<endl;
-  fcn->GetParameters(par);
+  fcn->GetParameters(par);/*
   time_call = fcn.Fit(ROOTMinimizer::FUMILI);
   cerr<<setw(3)<<"12"<<' '<<time_call<<endl;*/
   
@@ -89,5 +88,6 @@ int main(int argc, char * argv[]) {
     fcn.TestGrad(10, n_thr_cpu[i]);
   }
 */
+  free (fcn);
   return 0;
 }

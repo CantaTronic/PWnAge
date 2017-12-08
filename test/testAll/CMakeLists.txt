@@ -15,15 +15,10 @@ ADD_EXECUTABLE(testAll ${SRCS})
 
 TARGET_LINK_LIBRARIES(testAll
     Common  
+    Other
     libgtest
     libgmock
 )
-
-# TARGET_LINK_LIBRARIES(testPWAFunc
-#     include  
-#     libgtest
-#     libgmock
-# )
 
 add_test(NAME testAll
          COMMAND testAll) 

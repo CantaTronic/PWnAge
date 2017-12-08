@@ -41,5 +41,5 @@ include_directories("${source_dir}/googletest/include"
                     
                     "${PROJECT_SOURCE_DIR}/include")
 
-add_subdirectory(testTUtils)
+add_subdirectory(testAll)
 # add_subdirectory(testTPWAFunction)

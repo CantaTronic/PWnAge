@@ -2,13 +2,14 @@
 #pragma once
 
 #include "TPWAFunction.h"
-#include "TCalcCPU.h"
+#include "TCalcGPU.h"
 
-class TPWAFunctionCPU: public TPWAFunction {
+class TPWAFunctionGPU: public TPWAFunction {
 public:
-  TPWAFunctionCPU(std::string);/*
+  TPWAFunctionGPU(string ConfigFileName);
 protected:
+  unsigned mem_alloc_gpu;
   virtual void NCaches();
   virtual TCalcCache * CreateCalcCache(TCache * x, unsigned offset, unsigned blockSize);
-  virtual void PrintMem(unsigned _nev);*/
+  virtual void PrintMem(unsigned _nev);
 };

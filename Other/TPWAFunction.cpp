@@ -4,7 +4,7 @@
 #include "TDataCache.h"
 // 
 
-#include "../libConfPars/ConfigParser.h"
+#include "ConfigParser.h"
 #include "TPWAFunctionCPU.h"
 #include <cstring>
 #include <iostream>
@@ -48,20 +48,20 @@ TPWAFunction::TPWAFunction() {}
 
 void TPWAFunction::Init(string ConfigFileName) {
   std::cout<<"Init "<<std::endl;
-  ConfigParser conf(ConfigFileName, &resonances, &inputFiles);
+  ConfigParser conf(ConfigFileName, &resonances, &inputFiles);  //read resonances
 //   if(verbosity >= 3)
-//     resonances.PrintParameters();
+    resonances.PrintParameters(); //control print
   
-//   NCaches();
-//   data = new TDataCache(&resonances, inputFiles.dataEventFile, inputFiles.dataCacheFile);
-//   mem_alloc = data->mem_alloc;
-//   calc_data.resize(n_caches, 0);
-//   for(unsigned thr = 0; thr < n_caches; thr++) {
-//     unsigned blockSize = data->NEv()/n_caches;
-//     unsigned offset = thr*blockSize;
-//     if(thr == n_caches-1) blockSize = data->NEv()-offset;
-//     calc_data[thr] = CreateCalcCache(data, offset, blockSize);
-//   }
+  NCaches();  //set up number of caches
+  data = new TDataCache(&resonances, inputFiles.dataEventFile, inputFiles.dataCacheFile);   //loading caches
+  mem_alloc = data->mem_alloc;  
+  calc_data.resize(n_caches, 0);
+  for(unsigned thr = 0; thr < n_caches; thr++) {
+    unsigned blockSize = data->NEv()/n_caches;  //split data into blocks: equal numbers of events per cache
+    unsigned offset = thr*blockSize;    //...and offset
+    if(thr == n_caches-1) blockSize = data->NEv()-offset;
+    calc_data[thr] = CreateCalcCache(data, offset, blockSize);  //here we associate every thread with a concrete cache it'll be responsible for
+  }
 //   PrintMem(data->NEv());
 //   mc = new TDataCache(&resonances, inputFiles.mcEventFile, inputFiles.mcCacheFile);
 //   mem_alloc = mc->mem_alloc;

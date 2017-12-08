@@ -38,16 +38,16 @@ public:
   virtual ~TCache() { }
   virtual unsigned NEv() { return nev; }
   MemoryHandler * memHandler;
-  static void PrintMem(unsigned & nbytes, unsigned n_res = 0,
+  static void PrintMem(unsigned & nbytes, unsigned n_res = 0, //print how much memory do we use so far (mem_alloc value)
                        unsigned n_ev = 0, const char * dev = 0);
-  unsigned mem_alloc;
+  unsigned mem_alloc;    //how much memory do we use in this cache
   static int verbosity;
 protected:
   virtual void Allocate() = 0;
   virtual void Cleanup();
   virtual void Shift(unsigned offset);
   TResonanceSet * resonances;
-  unsigned nev;
+  unsigned nev;   //number of events  
   TPtrVec<TFloat> v1kT2;
   TPtrVec<TFloat> s_kchan;
   TPtr<TFloat> weight;

@@ -44,11 +44,13 @@ void TCache::Shift(unsigned offset) {
   precalc_factor.Shift(offset, nev);
 }
 
-void TCache::PrintMem(unsigned & nbytes, unsigned n_res, unsigned n_ev, const char * dev) {
+void TCache::PrintMem(unsigned & nbytes /*cache size in bytes*/, unsigned n_res/*number of resonances*/, unsigned n_ev/*number of events*/, const char * dev/*device*/) {
+  /*TODO: write description here */
   if(verbosity >= 0) {
-    string nm[] = {"B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"};
+    string nm[] = {"B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"};  //memory size units. TODO: rewrite it into more safe types
     double nbytesd = nbytes;
     unsigned step = 0;
+    
     while(nbytesd >= 1024) { nbytesd /= 1024; step++; }
     cerr<<"Allocated "<<nbytesd<<" "<<nm[step].data()<<" of memory"<<endl;
     if(dev) cerr<<" on "<< dev<<endl;

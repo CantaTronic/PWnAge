@@ -55,13 +55,14 @@ endif()
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 # 
 # The following folder will be included
-include_directories("${PROJECT_SOURCE_DIR}/include")
+# include_directories("${PROJECT_SOURCE_DIR}/include")
 include_directories(libConfPars)
 include_directories(libCommon)
 include_directories(libRes)
 include_directories(libPhys)
 include_directories(libCache)
 include_directories(libMemHandle)
+include_directories(Other)
 
 # link_directories(libConfPars)
 # link_directories(libCommon)
@@ -73,6 +74,7 @@ add_subdirectory(libRes)
 add_subdirectory(libPhys)
 add_subdirectory(libCache)
 add_subdirectory(libMemHandle)
+add_subdirectory(Other)
 add_subdirectory(test)
 # 
 # # looking for the sources in src/ dir
@@ -83,15 +85,15 @@ add_executable(${PROJECT_NAME}
 
 #list of sources
 main/test_JpsiToKKpi0.cpp 
-src/TJpsiToKKpi0Const.cpp 
-# src/TCache.cpp
-src/TPWAFunction.cpp
-# src/TResonanceSet.cpp
-src/TPWAFunctionCPU.cpp
+# src/TJpsiToKKpi0Const.cpp 
+# # src/TCache.cpp
+# src/TPWAFunction.cpp
+# # src/TResonanceSet.cpp
+# src/TPWAFunctionCPU.cpp
 # libConfPars/ConfigParser.cpp
 )#${SOURCES})
 # 
-target_link_libraries(${PROJECT_NAME} ConfPars Common Res Phys Cache MemHandle)
+target_link_libraries(${PROJECT_NAME} ConfPars Common Res Phys Cache MemHandle Other)
 # 
 # #install our binaries (have no idea, why do we need this - they are still installed automatically without it)
 # #DECTINATION and TARGETS are options of install() command
