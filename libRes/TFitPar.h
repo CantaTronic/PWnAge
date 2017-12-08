@@ -17,9 +17,9 @@ protected:
 public:
   TFitPar(TParArray * _par, unsigned _offset): par(_par), offset(_offset) { } //инициализация
   TFitPar(const TFitPar & x): par(x.par), offset(x.offset) { }
-  TFitPar & operator= (const TFitPar & x);  //сравнение значений параметров 
-  std::string Name();
-  const char * CName() { return Name().c_str(); }
+  TFitPar & operator= (const TFitPar & x);  //assign left-side parameter to right-side one
+  std::string Name(); //return name of parameter as string object
+  const char * CName() { return Name().c_str(); } //return name of parameter as CString
   void Set(TFloat v, TFloat step = 0.01); //установка значений параметров
   void Set(TFloat v, TFloat min, TFloat max, TFloat step = 0.01);
   void operator= (TFloat v) { par->SetParameter(offset, v); }
@@ -32,6 +32,11 @@ public:
   TFloat Min() { return par->minima[offset]; }
   TFloat Max() { return par->maxima[offset]; }
   TFloat Step() { return par->steps[offset]; }
+  
+  //test functions
+  unsigned getOffset() {
+    return this->offset;
+  }
 };
 
 std::ostream & operator<< (std::ostream & os, TFitPar _p);
