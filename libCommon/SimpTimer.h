@@ -13,7 +13,6 @@ public:
 
   void stop();
 
-//   float spotRate(size_t eventsThusFar);
   float rate();
 
 private:
