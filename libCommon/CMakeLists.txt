@@ -10,6 +10,8 @@ set(Common_SRC
     OffloadDirectives.h
     deviceType.h  #выбрать что-то одно из двух аналоговых (но чуть разных) device заголовков
     TDevice.h
+    SimpTimer.h
+    SimpTimer.cpp
 )
 
 # Declare the library

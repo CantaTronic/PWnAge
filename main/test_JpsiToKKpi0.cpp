@@ -4,6 +4,7 @@
 #include "TCache.h"
 // #include "TStat.h"
 #include <omp.h>
+#include "SimpTimer.h"
 #include <TUtils.h>
 #include "deviceType.h"   //currently supported device types are CPU, GPU, PHI
 #include <iostream>
@@ -22,6 +23,7 @@ using std::setw;
  */
 
 int main(int argc, char * argv[]) {
+  SimpTimer tm;
   //model initialization
   gReaction = new TJpsiToKKpi0Const;
   
@@ -37,11 +39,14 @@ int main(int argc, char * argv[]) {
   
 
   
-  TFloat time_call;
+//   TFloat time_call;
   double par[100];
   cerr<<" ==== FUMILI ===="<<endl;
-  fcn->GetParameters(par);/*
-  time_call = fcn.Fit(ROOTMinimizer::FUMILI);
+
+  fcn->GetParameters(par);
+    cout<<"It took "<<tm.rate()<<" to execute this test"<<endl;
+  //time_call = fcn->Fit(ROOTMinimizer::FUMILI);
+  /*
   cerr<<setw(3)<<"12"<<' '<<time_call<<endl;*/
   
 //   cerr<<" ==== MIGRAD (USER GRADIENTS) ===="<<endl;
