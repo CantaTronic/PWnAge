@@ -10,10 +10,18 @@ project_root
             |    +-- *.h
             |    +-- *.cpp
             |
-            +-- common
+            +-- Common
+            |   //includes all general-purpose modules we ave written:
             |    +-- CMakeLists
-            |    +-- *.h
-            |    +-- *.cpp
+            |    +-- cfloat                //for work with complex numbers
+            |    +-- TFloat.h              //for switching between float/double precision
+            |    +-- TGlobals.h            //the definitions for the physical constants we use
+            |    +-- TReaction.h           //the base class defenition for physical reaction
+            |    +-- TUtils.h              //module for checking out correctness of user input
+            |    +-- OffloadDirectives.h   //macroses for run in the offload mode (of Xeon Phi)
+            |    +-- deviceType.h          //defines supported hadware types
+            |    +-- TDevice.h             //defines supported hadware types - to be fixed in the future
+            |    +-- SimpTimer.h, *.cpp    //chrono-based C++ timer
             |
             +-- CPU
             |    +-- CMakeLists
