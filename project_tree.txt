@@ -62,8 +62,12 @@ project_root
             +-- Other
             |   //a set of still unsorted in libs source codes
             |    +-- CMakeLists
-            |    +-- *.h
-            |    +-- *.cpp
+            |    +-- TPWAFunction.h, *.cpp
+            |    +-- TPWAFunctionCPU.h, *.cpp
+            |    +-- TJpsiToKKpi0Const.h, *.cpp
+            |    +-- TCalcCPU.h, *.cpp
+            |    +-- ObjectiveFunction.h
+            |    +-- Minimizer.h
             |
             +-- GPU
             |   //all GPU-specific files (kernels)
